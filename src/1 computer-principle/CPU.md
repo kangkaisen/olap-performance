@@ -1,0 +1,5 @@
+---
+title: CPU
+icon: creative
+---
+

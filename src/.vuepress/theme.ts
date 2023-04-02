@@ -3,49 +3,36 @@ import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
+  hostname: "https://perf.bcmeng.com/",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mrhope.site",
+    name: "康凯森",
+    url: "https://www.bcmeng.com/",
+  },
+
+  navbarLayout: {
+    start: ["Brand"],
+    center: ["Links"],
+    end: ["Language", "Repo", "Outlook", "Search"],
   },
 
   iconAssets: "iconfont",
 
-  logo: "/logo.svg",
+  logo: "/logo.jpg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "https://github.com/kangkaisen/olap-performance",
 
-  docsDir: "demo/theme-docs/src",
+  docsDir: "src",
 
   locales: {
     "/": {
-      // navbar
-      navbar: enNavbar,
-
-      // sidebar
-      sidebar: enSidebar,
-
-      footer: "Default footer",
-
-      displayFooter: true,
-
-      metaLocales: {
-        editLink: "Edit this page on GitHub",
-      },
-    },
-
-    /**
-     * Chinese locale config
-     */
-    "/zh/": {
       // navbar
       navbar: zhNavbar,
 
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "默认页脚",
+      footer: "欢迎意见&反馈&贡献",
 
       displayFooter: true,
 
@@ -65,8 +52,11 @@ export default hopeTheme({
 
   plugins: {
     comment: {
-      // @ts-expect-error: You should generate and use your own comment service
-      provider: "Waline",
+      provider: "Giscus",
+      repo: "kangkaisen/olap-performance",
+      repoId: "R_kgDOJRcDXA",
+      category: "Announcements",
+      categoryId: "DIC_kwDOJRcDXM4CVeRF",
     },
 
     // all features are enabled for demo, only preserve features you need here
@@ -111,62 +101,5 @@ export default hopeTheme({
       vPre: true,
       vuePlayground: true,
     },
-
-    // uncomment these if you want a pwa
-    // pwa: {
-    //   favicon: "/favicon.ico",
-    //   cacheHTML: true,
-    //   cachePic: true,
-    //   appendBase: true,
-    //   apple: {
-    //     icon: "/assets/icon/apple-icon-152.png",
-    //     statusBarColor: "black",
-    //   },
-    //   msTile: {
-    //     image: "/assets/icon/ms-icon-144.png",
-    //     color: "#ffffff",
-    //   },
-    //   manifest: {
-    //     icons: [
-    //       {
-    //         src: "/assets/icon/chrome-mask-512.png",
-    //         sizes: "512x512",
-    //         purpose: "maskable",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-mask-192.png",
-    //         sizes: "192x192",
-    //         purpose: "maskable",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-512.png",
-    //         sizes: "512x512",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-192.png",
-    //         sizes: "192x192",
-    //         type: "image/png",
-    //       },
-    //     ],
-    //     shortcuts: [
-    //       {
-    //         name: "Demo",
-    //         short_name: "Demo",
-    //         url: "/demo/",
-    //         icons: [
-    //           {
-    //             src: "/assets/icon/guide-maskable.png",
-    //             sizes: "192x192",
-    //             purpose: "maskable",
-    //             type: "image/png",
-    //           },
-    //         ],
-    //       },
-    //     ],
-    //   },
-    // },
   },
 });
