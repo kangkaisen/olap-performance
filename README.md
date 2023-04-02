@@ -1,16 +1,10 @@
----
-title: 指南
-icon: creative
----
 
-## 功能亮点
+## OLAP 性能优化指南
 
-### Bar
+在线阅读： https://perf.bcmeng.com/
 
-- [baz](bar/baz.md)
-- ...
+### 为什么发起这个项目
 
-### Foo
+希望每个热爱数据库，热爱性能优化的工程师都能快速，系统地掌握 OLAP 性能优化的关键要点
 
-- [ray](foo/ray.md)
-- ...
+欢迎大家一起共建
