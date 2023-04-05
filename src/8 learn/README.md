@@ -3,6 +3,8 @@ title: 8 学习资料
 icon: creative
 ---
 
-## 介绍
+## 资料
 
-我们支持 foo 功能，...
+参考 [数据库学习资料](https://blog.bcmeng.com/post/database-learning.html#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96)
+
+
