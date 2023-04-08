@@ -32,7 +32,7 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "欢迎意见&反馈&贡献",
+      footer: "欢迎Star&贡献",
 
       copyright: 'Copyright © 2023 <a href="https://www.bcmeng.com/" target="_blank" >康凯森</a>',
 
