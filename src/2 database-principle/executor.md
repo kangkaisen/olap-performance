@@ -42,3 +42,91 @@ icon: creative
 ![starrcoks-vector-3](https://blog.bcmeng.com/post/media/16404977814611/starrcoks-vector-3.png)
 
 如上图所示，StarRocks 向量化执行性能优化的手段主要包括以上7种，其中 2 - 7 任何一个环节处理不好，都无法实现一个高性能的向量化执行引擎。
+
+### 向量化为什么可以提升数据库性能？
+
+本文所讨论的数据库都是基于 CPU 架构的，数据库向量化一般指的都是基于 CPU 的向量化，因此数据库性能优化的本质在于：一个基于 CPU 的程序如何进行性能优化。这引出了两个关键问题：
+
+1. 如何衡量 CPU 性能
+2. 哪些因素会影响 CPU 性能
+
+第一个问题的答案可以用以下公式总结：CPU Time = Instruction Number *CPI* Clock Cycle Time
+
+Instruction Number 表示指令数。当你写一个 CPU 程序，最终执行时都会变成 CPU 指令，指令条数一般取决于程序复杂度。
+CPI 是 （Cycle Per Instruction）的缩写，指执行一个指令需要的周期。
+Clock Cycle Time 指一个 CPU 周期需要的时间，是和 CPU 硬件特性强关联的。
+
+我们在软件层面可以改变的是前两项：Instruction Number 和 CPI。那么问题来了，具体到一个 CPU 程序，到底哪些因素会影响 Instruction Number 和 CPI 呢？
+
+我们知道 CPU 的指令执行分为如下 5 步：
+
+1. 取指令
+2. 指令译码
+3. 执行指令
+4. 内存访问
+5. 结果写回寄存器
+
+其中 CPU 的 Frontend 负责前两部分，Backend 负责后面三部分。基于此，Intel 提出了 《Top-down Microarchitecture Analysis Method》的 CPU 微架构性能分析方法，如下图所示：
+
+![](https://blog.bcmeng.com/post/media/16795404287791/16806903002948.jpg)
+
+Top-down Microarchitecture Analysis Method 的具体内容大家可以参考相关的论文，本文不做展开，为了便于大家理解，我们可以将上图简化为下图（不完全准确）：
+
+![](https://blog.bcmeng.com/post/media/16795404287791/16806905088368.jpg)
+
+即影响一个 CPU 程序的性能瓶颈主要有4大点：Retiring、Bad Speculation、Frontend Bound 和 Backend Bound，4个瓶颈点导致的主要原因（不完全准确）依次是：缺乏 SIMD 指令优化，分支预测错误，指令 Cache Miss， 数据 Cache Miss。
+
+再对应到之前的 CPU 时间计算公式，我们就可以得出如下结论：
+
+![](/vector.png)
+
+而数据库向量化对以上 4 点都会有提升，后文会有具体解释，至此，本文从原理上解释了为什么向量化可以提升数据库性能。
+
+### 算子和表达式向量化的关键点
+
+数据库的向量化在工程上主要体现在算子和表达式的向量化，而算子和表达式的向量化的关键点就一句话：Batch Compute By Column, 如下图所示：
+
+![](/batch-column.png)
+
+对应 Intel 的 Top-down 分析方法，Batch 优化了 分支预测错误和指令 Cache Miss，By Column 优化了 数据 Cache Miss，并更容易触发 SIMD 指令优化。
+
+Batch 这一点其实比较好做到，难点是对一些重要算子，比如 Join、Aggregate、Sort、Shuffle 等，如何做到按列处理，更难的是在按列处理的同时，如何尽可能触发 SIMD 指令的优化。
+
+### 数据库向量化如何进行性能优化
+
+前面提到，数据库向量化是一个巨大的、系统的性能优化工程，两年来，我们实现了数百个大大小小的优化点。我将 StarRocks 向量化两年多的性能优化经验总结为 7 个方面 （注意，由于向量化执行是单线程执行策略，所以下面的性能优化经验不涉及并发相关）：
+
+1. **高性能第三方库**：在一些局部或者细节的地方，已经存在大量性能出色的开源库，这时候，我们可能没必要从头实现一些算法或者数据结构，使用高性能第三方库可以加速我们整个项目的进度。在 StarRcoks 中，我们使用了 Parallel Hashmap、Fmt、SIMD Json 和 Hyper Scan 等优秀的第三方库。
+
+2. **数据结构和算法**：高效的数据结构和算法可以直接在数量级上减少 CPU 指令数。在 StarRocks 2.0 中，我们引入了低基数全局字典，可以通过全局字典将字符串的相关操作转变成整形的相关操作。如下图所示，StarRcoks 将之前基于两个字符串的 Group By 变成了基于一个整形的 Group By，这样 Scan、Hash 计算、Equal、Memcpy 等操作都会有数倍的性能提升，整个查询最终会有 3 倍的性能提升。
+
+![starrocks-low-cardinality](/starrocks-low-cardinality.png)
+
+3. 自适应优化：很多时候，如果我们拥有更多的上下文或者更多的信息，我们就可以做出更多针对性的优化，但是这些上下文或者信息有时只能在查询执行时才可以获取，所以我们必须在查询执行时根据上下文信息动态调整执行策略，这就是所谓的自适应优化。下图展示了一个根据选择率动态选择 Join Runtime Filter 的例子，有 3 个关键点：
+
+  a. 如果一个 Filter 几乎不能过滤数据，我们就不选择；
+
+  b. 如果一个 Filter 几乎可以把数据过滤完，我们就只保留一个 Filter;
+
+  c. 最多只保留 3 个有用的 Filter
+
+![adaptive-filter](/adaptive-filter.png)
+
+4. SIMD 优化：如下图所示，StarRcoks 在算子和表达式中大量使用了 SIMD 指令提升性能。
+
+![simd-database](/simd-database.png)
+
+5. C++ Low Level 优化：即使是相同的数据结构、相同的算法，C++ 的不同实现，性能也可能相差好几倍，比如 Move 变成了 Copy，Vector 是否 Reserve，是否 Inline， 循环相关的各种优化，编译时计算等等。
+
+6. 内存管理优化：当 Batch Size 越大、并发越高，内存申请和释放越频繁，内存管理对性能的影响越大。我们实现了一个 Column Pool，用来复用 Column 的内存，显著优化了整体的查询性能。下图是一个 HLL 聚合函数内存优化的代码示意，通过将 HLL 的内存分配变成按 Block 分配，并实现复用，将 HLL 的聚合性能直接提升了 5 倍。
+
+![hll-memory](/hll-memory.png)
+
+7. CPU Cache 优化：做性能优化的同学都应该对下图的数据了熟于心，清楚 CPU Cache Miss 对性能的影响是十分巨大的，尤其是我们启用了 SIMD 优化之后，程序的瓶颈就从 CPU Bound 变成了 Memory Bound。同时我们也应该清楚，随便程序的不断优化，程序的性能瓶颈会不断转移。
+
+![latency-number](/latency-number.png)
+
+下面的代码展示了我们利用 Prefetch 优化 Cache Miss 的示例，我们需要知道，Prefetch 应该是最后一项优化 CPU Cache 的尝试手段，因为 Prefetch 的时机和距离比较难把握，需要充分测试。
+
+![starrocks-prefetch](/starrocks-prefetch.png)
+

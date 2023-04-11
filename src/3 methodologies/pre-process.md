@@ -59,3 +59,16 @@ OLAP 系统中都会区分维度列和指标列，所谓预聚合，就是在导
 ### 1.4 Cache
 
 Cache 在计算机中无处不在，如果我们明确一个相同的查询之后会被多次查询到，我们就可以对第一次查询进行Cache。 Cache 可以在多个层次，比如操作系统本身的 Page Cache，数据库存储层针对文件或者 Page, Block 级别的 Cache，数据库计算层针对分区，Segment，结果集的 Cache。 Cache 的难点在于如何避免频繁换入换出，如何保证 Cache 的命中率，讨论 Cache 的文章很多，本文就不深入展开。
+
+
+## Load VS Compaction VS Query
+
+![Load VS Compaction VS Query](/write-read.png)
+
+如上图所示，在数据库整个生命周期内，除了 Load 和 查询，大多数 OLAP 数据库还有 Compaction 的过程，很多在 Load 过程中可以做的优化，如果为了降低 Load 的延迟，我们可以考虑转移到 Compaction 的过程中去做，比如：
+
+1. 索引的构建：可以导入时只构建轻量级索引, Compaction 过程中构建重量级索引
+2. MV的构建
+3. 重新按照不同的 Sort Key 排序
+
+
