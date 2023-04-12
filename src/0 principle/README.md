@@ -22,6 +22,8 @@ icon: creative
 
 ## 查询性能优化的目标
 
+> database performance can be defined as the optimization of resource use to increase throughput and minimize contention, enabling the largest possible workload to be processed.
+
 从应用视角，主要是 Latency 和 Throughput。 （在总资源不变的情况下 缩短响应时间，一般都可以提升吞吐率。）
 
 从系统资源的视角，我们要优化 CPU, IO, Memory, NetWork 等系统资源的利用率。 (在性能优化的过程中，我们在关注查询吞吐和时延的同时，也一定要关注系统资源的利用率。因为有时候的性能提升几倍的同时，也多用了几倍的 CPU)
@@ -94,6 +96,20 @@ icon: creative
 7. 目标系统原理，源码的深刻理解和掌握
 
 性能优化是一门工程，实践出真知，大家还是多动手，多尝试，多积累经验。
+
+## 关键性能数据
+
+### 不同介质的访问延迟数据
+
+<https://colin-scott.github.io/personal_website/research/interactive_latency.html>
+
+### 内存带宽
+
+RAM bandwidth could be 50 GB/sec
+
+### SSD 带宽
+
+SSD could be only 600 MB/sec.
 
 ## 性能的可预测性
 
