@@ -3,6 +3,13 @@ title: 查询执行器优化点
 icon: creative
 ---
 
+### SIMD
+
+### CPU Cache 优化
+
+### HashTable 优化
+
+### 多核优化
 
 ### Runtime Filter
 
@@ -19,4 +26,13 @@ icon: creative
 ### 序列化
 
 ### Operations on Encoded Data
+
+### DPDK
+
+### 编译器优化
+
+### 异步
+
+
+
 
