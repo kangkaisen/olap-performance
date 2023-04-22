@@ -5,17 +5,29 @@ icon: creative
 
 ## 索引
 
+### 前缀索引
+
+### ZoneMap 索引
+
+### BloomFilter 索引
+
+### Bitmap 倒排索引
+
 ## Cache
 
 ## 异步
 
-## Scan 优先级角度
+## 并行度 / Scan 线程数
+
+## Scan 优先级
 
 ## Shared Scan
 
 ## 延迟物化
 
-## Segment 大小
+## Segment 大小 / 文件大小
+
+## 文件的版本数
 
 ## 数据局部性
 
@@ -23,6 +35,8 @@ icon: creative
 
 ## 编码
 
-## 预期
+## 预取
 
 ## Runtime filter
+
+## Compaction

@@ -8,6 +8,8 @@ icon: creative
 
 ## 元数据优化
 
+### In Memory MetaData
+
 ### 利用元数据加速查询
 
 ### 利用元数据改写查询
@@ -26,7 +28,9 @@ icon: creative
 
 ### Outer Join 转 Inner Join
 
-### Limit Merge, Limit 下推
+### Limit Merge
+
+### Limit 下推
 
 ### 聚合 Merge
 
@@ -48,15 +52,34 @@ icon: creative
 
 ### 多阶段聚合优化
 
-### Join 左右表调整
+### Join 左右表 Reorder
 
 ### Join 多表 Reorder
 
 ### Join 分布式执行选择
+
+#### Shuffle Join
+
+#### Broadcast Join
+
+#### Bucket Shuffle Join
+
+#### Colocate Join
+
+#### Replication Join
 
 ### CTE 复用
 
 ### Agg 下推 Join
 
 ### Agg 下推 GroupingSets
+
+### 物化视图选择与改写
+
+## 统计信息
+
+### 统计信息的收集方式
+
+### 统计信息的收集频率
+
 

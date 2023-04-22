@@ -17,6 +17,8 @@ icon: creative
 
 ### IO 调度
 
+### 网络传输
+
 ### 内存管理
 
 ### 线程模型
@@ -33,6 +35,8 @@ icon: creative
 
 ### 异步
 
+### Adaptive
 
+#### Adaptive Runtime Join Filter
 
 

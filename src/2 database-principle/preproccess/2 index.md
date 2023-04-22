@@ -1,5 +1,5 @@
 ---
-title: "索引"
+title: 索引
 icon: creative
 ---
 

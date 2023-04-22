@@ -1,5 +1,5 @@
 ---
-title: "物化视图"
+title: 物化视图
 icon: creative
 ---
 
