@@ -3,8 +3,9 @@ title: 查询优化器优化点
 icon: creative
 ---
 
-## Nullable 优化
+## Parser 优化
 
+## Nullable 优化
 
 ## 元数据优化
 
@@ -19,6 +20,12 @@ icon: creative
 ## 常见的RBO 优化
 
 ### 各种表达式的重写和化简
+
+#### Cast 消除
+
+#### 谓词化简
+
+#### 公共谓词提取
 
 ### 列裁剪
 
