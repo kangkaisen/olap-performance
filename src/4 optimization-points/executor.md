@@ -20,6 +20,8 @@ icon: creative
 
 ### 分支误判
 
+### Chunk Size
+
 ### SIMD
 
 #### SIMD text parsing
@@ -52,9 +54,25 @@ icon: creative
 
 ### CPU Cache 优化
 
+#### Improve Locality (Spatial And Temporal)
+
+#### Align The Code And Data
+
+#### Reduce Memory Footprint
+
+#### Block
+
+#### Prefetch
+
 ### HashTable 优化
 
 ### 多核优化
+
+#### Lock
+
+#### 调度
+
+#### NUMA
 
 ### Runtime Filter
 
@@ -82,6 +100,8 @@ icon: creative
 
 ### DPDK
 
+### Code Gen
+
 ### 编译器优化
 
 ### 精确去重
@@ -105,3 +125,25 @@ icon: creative
 #### Adaptive Pipeline Parallelism
 
 ### C++ Low Level
+
+#### Inline
+
+#### Loop Optimization
+
+#### Unrolling
+
+#### Resize No Initialize
+
+#### Copy To Move
+
+#### Std::vector
+
+#### Code Layout
+
+#### Link-Time Optimization (LTO)
+
+#### Profile-Guided Optimization (PGO)
+
+#### Compile-time Computation
+
+### 高性能第三方库
