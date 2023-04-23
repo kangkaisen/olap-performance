@@ -15,11 +15,13 @@ icon: creative
 
 ### Bitmap 倒排索引
 
+### 物化列
+
 ## Cache
 
 ## 异步
 
-## 并行度 / Scan 线程数
+## 动态调整 IO 并行度
 
 ## Scan 优先级
 
@@ -40,5 +42,7 @@ icon: creative
 ## 预取
 
 ## Runtime filter
+
+## 表达式下推存储层
 
 ## Compaction

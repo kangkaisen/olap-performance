@@ -28,6 +28,8 @@ icon: creative
 
 #### SIMD string operations
 
+#### SIMD json
+
 #### SIMD join runtime filter
 
 #### SIMD hash table probe
@@ -36,6 +38,18 @@ icon: creative
 
 #### SIMD memcmp
 
+#### SIMD case when
+
+#### SIMD gather
+
+#### SIMD branchless
+
+#### SIMD filter
+
+#### SIMD aggregate
+
+### Query Cache
+
 ### CPU Cache 优化
 
 ### HashTable 优化
@@ -43,6 +57,12 @@ icon: creative
 ### 多核优化
 
 ### Runtime Filter
+
+#### Local Join Runtime Filter
+
+#### Global Join Runtime Filter
+
+#### Top-N Runtime Filter
 
 ### Decimal 乘法
 
@@ -64,12 +84,24 @@ icon: creative
 
 ### 编译器优化
 
+### 精确去重
+
 ### 异步
 
 ### Adaptive
 
-#### Adaptive Runtime Join Filter
+#### Adaptive Join Runtime Filters Selection
 
 #### Adaptive Streaming Aggregate
+
+#### Adaptive Aggregate Hash Map Selection
+
+#### Adaptive IO 并发度
+
+#### Adaptive Filter Execution Strategy
+
+#### Adaptive Encoding
+
+#### Adaptive Pipeline Parallelism
 
 ### C++ Low Level
