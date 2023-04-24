@@ -18,7 +18,17 @@ icon: creative
 
 ### 虚函数调用
 
-### 分支误判
+### 分支预测
+
+5星力荐的视频教程： Branchless Programming in C++ - Fedor Pikus - CppCon 2021
+
+<https://www.youtube.com/watch?v=g-WPhYREFjk>
+
+分支预测的原理，以及在实际代码中的优化点都讲的很清楚
+
+对应的 PPT 文件：
+
+<https://github.com/CppCon/CppCon2021/blob/main/Presentations/Branchless_computing.pdf>
 
 ### Chunk Size
 
