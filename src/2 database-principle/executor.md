@@ -19,7 +19,7 @@ icon: creative
 
 ## Push VS Pull
 
-![push-pull](/push-pull.png)
+![push-pull](/push-pull.jpg)
 
 如上图所示，在Push的执行方式中，数据流和控制流方向一致，在Pull的执行方式，数据流和控制流方向相反。
 
