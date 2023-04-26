@@ -7,7 +7,7 @@ icon: creative
 ## 网站
 
 1. <https://www.brendangregg.com/>
-2.
+2. CppCon：<https://github.com/CppCon> 有大量 C++ 性能优化的优质分享
 
 
 ## 书籍

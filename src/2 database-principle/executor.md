@@ -17,6 +17,57 @@ icon: creative
 
 如上图所示，对于SQL Group By City, Platform, 如果 City, Platform 都是低基数字符串，我们就可以将对两个字符串列的 Hash 聚合变为针对两个 Int 列的 Hash 聚合，这样在 Scan, Shuffle，Hash，Equal，Memcpy 等多个重要操作上都会变快很多，我们实测整体查询性能可以有 3 倍的提升。
 
+## Push VS Pull
+
+![push-pull](/push-pull.png)
+
+如上图所示，在Push的执行方式中，数据流和控制流方向一致，在Pull的执行方式，数据流和控制流方向相反。
+
+大家可以从下面这段伪代码中更直接地体会Push和Pull的区别：
+
+```
+// pull: 先从相邻前驱的 Operater（调用getChild）获得Chunk,
+// 然后调用具体算子的process函数处理，最后返回算出的Chunk
+class PhysicalOperator {
+public:
+  Chunk getChunk() {
+    auto input_chunk = getChild().getChunk();
+    auto result_chunk = process(input_chunk);
+    return result_chunk;
+  }
+  virtual Chunk process(Chunk const& src) = 0;
+}
+
+// push：src_chunk由相邻前驱算子传入, 调用具体算子的process函数处理, 得到结果之后，
+// 通过相邻后继算子（getNextOperator获得)的consume函数，交给下一级算子处理.
+class PhysicalOperator {
+public:
+  void consume(Chunk const& src_chunk) {
+    auto result_chunk = process(src_chunk);
+    getNextOperator().consume(result_chunk);
+  }
+  virtual Chunk process(Chunk const& src) = 0;
+}
+
+```
+
+**总的来说，Push 模型能做到的事情，Pull 模型也能做到**
+
+Push 模型中，Producers 驱动整个流程；Pull 模型中，Consumers 驱动整个流程。
+
+### Push 模型的优点
+
+1. 数据流和控制流解耦，每个算子自身不用处理控制逻辑
+2. 高效的支持  DAG 的plan，不只是 Tree 的plan, 可以进行CTE 复用优化 和 Scan Share 优化
+3. 可以方便地进行 yield
+4. 对异步IO 更友好，处理 IO 任务时，将对应算子暂停，数据就绪是唤醒对应的算子
+5. 对 Code-gen 模型更友好
+
+### Push 模型的缺点
+
+1. 不好处理 Sort-Merge join
+2. 不好处理 Limit 短路
+3. 不好处理 Runtime Filter
 
 ## 向量化执行器
 
