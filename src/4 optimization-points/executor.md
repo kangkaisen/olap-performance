@@ -76,6 +76,13 @@ icon: creative
 
 ### HashTable 优化
 
+### 表达式
+
+#### Const 优化
+
+#### Null 优化
+
+
 ### 多核优化
 
 #### Lock
