@@ -181,3 +181,36 @@ Batch 这一点其实比较好做到，难点是对一些重要算子，比如 J
 
 ![starrocks-prefetch](/starrocks-prefetch.png)
 
+## Pipeline 多核执行
+
+- Yield
+- 用户空间
+- Morsel-Driven
+- Task-Queue
+- Operator asynchronzation
+- Local Exchange
+
+![pipeline-task](/pipeline-task.png)
+
+Operator 的状态
+
+- Ready
+- Running
+- Blocked
+
+![pipeline-status](/pipeline-status.png)
+
+
+## MPP 多机执行
+
+MPP 是大规模并行计算的简称，核心做法是将查询 Plan 拆分成很多可在单个节点上执行的计算实例，然后多个节点并行执行。每个节点不共享 CPU、内存、磁盘资源。MPP 数据库的查询性能可以随着集群的水平扩展而不断提升。
+
+![mpp-fragment](/mpp-fragment.png)
+
+如上图 所示，StarRocks 会将一个查询在逻辑上切分为多个 Query Fragment（查询片段），每个 Query Fragment 可以有一个或者多个 Fragment 执行实例，每个 Fragment 执行实例会被调度到集群某个 BE 上执行。一个 Fragment 可以包括一个或者多个 Operator（执行算子），图中的 Fragment 包括了Scan、Filter、Aggregate。每个 Fragment 可以有不同的并行度。
+
+![mpp-shuffle](/mpp-shuffle.png)
+
+如上图 所示，多个 Fragment 之间会以 Pipeline 的方式在内存中并行执行，而不是像批处理引擎那样 Stage By Stage 执行。Shuffle （数据重分布）操作是 MPP 数据库查询性能可以随着集群的水平扩展而不断提升的关键，也是实现高基数聚合和大表 Join 的关键。
+
+
