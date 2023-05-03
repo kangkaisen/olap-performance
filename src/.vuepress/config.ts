@@ -19,8 +19,8 @@ export default defineUserConfig({
   locales: {
     "/": {
       lang: "zh-CN",
-      title: "OLAP 性能优化指南",
-      description: "OLAP 性能优化指南",
+      title: "OLAP 数据库性能优化指南",
+      description: "OLAP 数据库性能优化指南",
     },
   },
 

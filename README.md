@@ -1,5 +1,5 @@
 
-# 《OLAP 性能优化指南》
+# 《OLAP 数据库性能优化指南》
 
 在线阅读： https://perf.bcmeng.com/
 
