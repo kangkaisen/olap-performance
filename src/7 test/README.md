@@ -14,3 +14,10 @@ icon: creative
 * 要能压出系统的能力边界
 * 要有丰富的，各种细粒度的监控指标
 * **细致，周密，敏锐，自动化，标准化**
+
+
+## 如何发现不明显的性能回退
+
+<https://github.com/StarRocks/starrocks/pull/23300>
+
+

@@ -74,6 +74,12 @@ icon: creative
 
 #### Prefetch
 
+#### Code Cache
+
+优化实例：
+
+<https://github.com/StarRocks/starrocks/pull/23300>
+
 ### HashTable 优化
 
 ### 表达式
@@ -90,6 +96,8 @@ icon: creative
 #### 调度
 
 #### NUMA
+
+#### Context-switches
 
 ### Runtime Filter
 
@@ -145,6 +153,11 @@ icon: creative
 
 #### Inline
 
+#### memcpy
+
+<https://github.com/StarRocks/starrocks/pull/13330>
+
+
 #### Loop Optimization
 
 #### Unrolling
@@ -164,3 +177,7 @@ icon: creative
 #### Compile-time Computation
 
 ### 高性能第三方库
+
+### 不同的指令集
+
+
