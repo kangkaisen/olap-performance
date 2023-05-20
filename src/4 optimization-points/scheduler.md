@@ -9,7 +9,7 @@ icon: creative
 
 ## 延迟调度
 
-## 亲和性调度
+## 亲和性调度  Soft Affinity Scheduling
 
 ## 感知负载的调度
 

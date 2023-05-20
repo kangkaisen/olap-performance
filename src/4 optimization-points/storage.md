@@ -19,7 +19,43 @@ icon: creative
 
 ## Cache
 
-## 异步
+### 多级 Cache
+
+RaptorX: Building a 10X Faster Presto <https://prestodb.io/blog/2021/02/04/raptorx>
+
+* Metastore Versioned Cache
+* File List cache
+* Fragment Result Cache
+* File Descriptor and Footer Cache
+* Alluxio Data Cache
+
+### 写入绕过 Cache
+
+TencentCLS: The Cloud Log Service with High Query Performances <https://www.vldb.org/pvldb/vol15/p3472-yu.pdf>
+
+vm.dirty_background_ratio
+vm.dirty_expire_centisecs
+
+## 异步 IO
+
+Magma: A High Data Density Storage Engine Used in Couchbase <https://www.vldb.org/pvldb/vol15/p3496-lakshman.pdf>
+
+## Zero Copy
+
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9BzxNcdOAGP1FmhOb2PSXQ.png)
+
+Linux sendfile:
+
+```
+ssize_t sendfile(
+  int out_fd,
+  int in_fd,
+  off_t *offset,
+  size_t count
+  );
+```
+
+## IO 多路复用
 
 ## 动态调整 IO 并行度
 

@@ -66,6 +66,8 @@ icon: creative
 
 #### Improve Locality (Spatial And Temporal)
 
+时间局部性：Reduce cache miss when evaluate lots of expr in aggregate <https://github.com/StarRocks/starrocks/pull/15998>
+
 #### Align The Code And Data
 
 #### Reduce Memory Footprint
@@ -87,7 +89,6 @@ icon: creative
 #### Const 优化
 
 #### Null 优化
-
 
 ### 多核优化
 
@@ -117,11 +118,36 @@ icon: creative
 
 ### 内存管理
 
+#### 避免 Copy
+
+#### 内存分配的连续性
+
+#### 尽可能早的释放内存
+
 ### 线程模型
 
 ### 序列化
 
 ### Operations on Encoded Data
+
+<https://archived.docs.singlestore.com/v7.0/concepts/understanding-ops-on-encoded-data/>
+
+可以操作数据的编码方式：
+
+- dictionary encoding
+- run-length encoding
+- integer value encoding
+
+可以优化的算子：
+
+- Scan
+- Filter
+- Group By
+- Aggregate
+- Expressions
+- Join
+- Sort
+- Union
 
 ### DPDK
 
@@ -151,12 +177,21 @@ icon: creative
 
 ### C++ Low Level
 
+#### Final 去虚拟化
+
+<https://gcc.godbolt.org/z/16zMdjEjY>
+
+- Virtual functions do not incur too much additional cost by themselves, The number one factor that is responsible for bad performance are data cache misses
+
+- Avoiding vector of pointers on a hot path is a must
+
+- Most overhead of virtual functions comes from small functions, they cost more to call than to execute
+
 #### Inline
 
 #### memcpy
 
 <https://github.com/StarRocks/starrocks/pull/13330>
-
 
 #### Loop Optimization
 
@@ -175,6 +210,16 @@ icon: creative
 #### Profile-Guided Optimization (PGO)
 
 #### Compile-time Computation
+
+#### 查表法 Table Lookup
+
+- optimize harmonic mean evaluation in hll::estimate_cardinality <https://github.com/StarRocks/starrocks/pull/16351>
+
+#### std::inplace_merge 代替 std::merge
+
+std::inplace_merge 是原地 Merge，相比 std::merge 更省内存
+
+<https://github.com/StarRocks/starrocks/pull/14609>
 
 ### 高性能第三方库
 

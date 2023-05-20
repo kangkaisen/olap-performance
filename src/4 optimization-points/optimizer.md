@@ -29,6 +29,7 @@ StarRocks 对 Nullable 的优化主要体现在下面几点：
 
 - 全表 Count, Sum, Max, Min 的聚合查询可以直接从元数据查询 <https://github.com/StarRocks/starrocks/pull/15542>
 - 利用元数据加速 统计信息计算的查询
+- Small Materialized Aggregates: A Light Weight Index Structure for Data Warehousing <https://www.vldb.org/conf/1998/p476.pdf>
 
 ### 利用元数据改写查询
 
