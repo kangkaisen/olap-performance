@@ -33,6 +33,10 @@ icon: creative
 
 ## 文件的版本数
 
+## 动态文件裁剪
+
+![file-pruned](/file-pruned.png)
+
 ## 数据局部性
 
 ## 压缩
@@ -46,3 +50,9 @@ icon: creative
 ## 表达式下推存储层
 
 ## Compaction
+
+## 硬件
+
+### NVMe
+
+- Is Sequential IO Dead In The Era Of The NVMe Drive? <https://jack-vanlightly.com/blog/2023/5/9/is-sequential-io-dead-in-the-era-of-the-nvme-drive>

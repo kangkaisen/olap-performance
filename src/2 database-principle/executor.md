@@ -214,3 +214,10 @@ MPP 是大规模并行计算的简称，核心做法是将查询 Plan 拆分成�
 如上图 所示，多个 Fragment 之间会以 Pipeline 的方式在内存中并行执行，而不是像批处理引擎那样 Stage By Stage 执行。Shuffle （数据重分布）操作是 MPP 数据库查询性能可以随着集群的水平扩展而不断提升的关键，也是实现高基数聚合和大表 Join 的关键。
 
 
+## 查询编译
+
+### 优化点
+
+1. 先解释执行，然后异步编译查询，编译完成后，将解释执行切换到 编译好的 Native Code 执行
+2. Plan Cache：将相同 pattern 的SQL 编译后的代码模板 Cache 下来，避免重复编译，可以选择 Cache 在
+memory 或者 disk 上

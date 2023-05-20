@@ -7,13 +7,33 @@ icon: creative
 
 ## Nullable 优化
 
+Null 和 Nullable 是数据库中比较容易出错的点， Null 相关的很多逻辑都需要特殊处理，比如 Join， 聚合等算子，一些函数，谓词，四则运算 和 逻辑运算等。 而在向量化执行中， Null 和 Nullable 对性能的影响也很大。
+
+Nullable 对性能的影响主要是两点：
+
+1. null 需要特殊判断，可能会需要很多 if else , 导致一些地方不能向量化和分支预测错误
+2. null 的数据需要占一个 column 或者 bitmap，会有额外的存储和计算开销。
+
+StarRocks 对 Nullable 的优化主要体现在下面几点：
+
+1. 优化器对 Nullable 熟悉进行判断，如果可以确定表达式的结果一定是 Non-nullable 的，就会告诉执行层这个信息，这样执行层处理时完全不需要考虑 Null。比如 StarRocks 的这个PR： <https://github.com/StarRocks/starrocks/pull/15380/files>  当确定 cast 一定可以成功，且输入是 Non-nullable 的column时，结果就一定是  Non-nullable 的
+2. 利用 has_null 标识进行快速短路，如果一个chunk 里面的数据都没有null，就走  Non-nullable 的处理逻辑，在很多算子和函数中可以看到大量这种优化
+3. 利用 SIMD 指令快速对 全是 null 和 全不是 null 的 case 进行处理，在 StarRocks 的nullable_aggregate.h 可以看到大量这种优化
+4. 在表达式计算中，对 null 的 数组和 data 的数组分别进行向量化处理。
+
 ## 元数据优化
 
 ### In Memory MetaData
 
 ### 利用元数据加速查询
 
+- 全表 Count, Sum, Max, Min 的聚合查询可以直接从元数据查询 <https://github.com/StarRocks/starrocks/pull/15542>
+- 利用元数据加速 统计信息计算的查询
+
 ### 利用元数据改写查询
+
+- ![metadata-rewrite](/metadata-rewrite.png)
+- Big Metadata: When Metadata is Big Data <http://vldb.org/pvldb/vol14/p3083-edara.pdf>
 
 ## 分区分桶裁剪
 
@@ -55,6 +75,10 @@ icon: creative
 
 ### Empty Union, Intersect, Except 裁剪
 
+### In 转 Semi Join 或者 Inner Join
+
+<http://mysql.taobao.org/monthly/2023/01/01/>
+
 ## 常见的 CBO 优化
 
 ### 多阶段聚合优化
@@ -82,6 +106,8 @@ icon: creative
 ### Agg 下推 GroupingSets
 
 ### 物化视图选择与改写
+
+### 利用基数信息进行优化
 
 ## 统计信息
 

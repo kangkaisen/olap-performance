@@ -20,4 +20,7 @@ icon: creative
 
 <https://github.com/StarRocks/starrocks/pull/23300>
 
+## 性能测试文章
+
+1. Kafka vs Redpanda Performance - Do the claims add up? <https://jack-vanlightly.com/blog/2023/5/15/kafka-vs-redpanda-performance-do-the-claims-add-up>
 

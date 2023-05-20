@@ -17,9 +17,12 @@ icon: creative
 
 ### Vector Intrinsics
 
-### 
-
 ## SIMD 优化案例
 
+### 如何更好地触发向量化
+
+#### 循环外提
+
+<https://github.com/StarRocks/starrocks/pull/14510>
 
 
