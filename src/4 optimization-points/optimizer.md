@@ -50,6 +50,10 @@ StarRocks 对 Nullable 的优化主要体现在下面几点：
 
 ### 列裁剪
 
+#### Shuffle 列裁剪
+
+确保任何多余的列不要参与网络传输
+
 ### 谓词下推
 
 ### 等价谓词推导（常量传播）
@@ -100,7 +104,11 @@ StarRocks 对 Nullable 的优化主要体现在下面几点：
 
 #### Replication Join
 
+#### Join 和 Aggregate Runtime Colocate, 避免 Shuffle
+
 ### CTE 复用
+
+### CTE 列裁剪
 
 ### Agg 下推 Join
 

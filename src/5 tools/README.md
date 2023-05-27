@@ -43,6 +43,17 @@ icon: creative
 
 <https://github.com/facebookincubator/BOLT>
 
+
+## 性能压测工具
+
+### mysqlslap
+
+```
+mysqlslap -u root --password=xxx -h 127.0.0.1 -P 888  0 -c 1 -i 1 --create-schema=test --query="sql-groupby-string-string_int_int";
+```
+
+### Jmeter
+
 ## 在线网站
 
 ### godbolt.org
@@ -53,7 +64,6 @@ icon: creative
 
 <https://quick-bench.com/>
 
-###
 
 
 

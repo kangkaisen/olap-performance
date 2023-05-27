@@ -64,6 +64,10 @@ icon: creative
 
 ### CPU Cache 优化
 
+pack data，尽可能 touch 足够小的内存
+
+#### 内存布局
+
 #### Improve Locality (Spatial And Temporal)
 
 时间局部性：Reduce cache miss when evaluate lots of expr in aggregate <https://github.com/StarRocks/starrocks/pull/15998>
@@ -107,6 +111,12 @@ icon: creative
 #### Global Join Runtime Filter
 
 #### Top-N Runtime Filter
+
+#### Runtime filter 是否 Merge
+
+#### 自适应 Scan wait time
+
+#### 自适应的 push down row limit
 
 ### Decimal 乘法
 
@@ -215,6 +225,8 @@ icon: creative
 
 - optimize harmonic mean evaluation in hll::estimate_cardinality <https://github.com/StarRocks/starrocks/pull/16351>
 
+#### 编译期运算
+
 #### std::inplace_merge 代替 std::merge
 
 std::inplace_merge 是原地 Merge，相比 std::merge 更省内存
@@ -225,4 +237,4 @@ std::inplace_merge 是原地 Merge，相比 std::merge 更省内存
 
 ### 不同的指令集
 
-
+High-performance load-time implementation Selection: <https://github.com/CppCon/CppCon2022/blob/main/Presentations/Load-Time-Function-Selection.pdf>

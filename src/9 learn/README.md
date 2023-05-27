@@ -13,6 +13,7 @@ icon: creative
 ## 书籍
 
 1. 《性能之巅：洞悉系统、企业与云计算》
+2. 《Architecting and Deploying DB2 with BLU Acceleration》第一章节 <https://www.redbooks.ibm.com/redbooks/pdfs/sg248212.pdf>
 
 
 ## 资料
