@@ -32,6 +32,10 @@ icon: creative
 
 #### 分支取直（Branch Straightening）
 
+#### 整数区间判断
+
+<https://stackoverflow.com/questions/17095324/fastest-way-to-determine-if-an-integer-is-between-two-integers-inclusive-with>
+
 ### Chunk Size
 
 ### SIMD
@@ -257,6 +261,7 @@ Link Order Changes function addresses
 - Make as many types as possible TriviallyCopyable.
 - 用 lambda 代替 std function <https://quick-bench.com/q/4IKpxAA5VEbXVziV1G2Po-ZupSE>
 - std::fill 要注意模板的类型匹配   <https://travisdowns.github.io/blog/2020/01/20/zero.html>
+- Multiplying and shifting is a standard technique to emulate the division.
 
 #### Final 去虚拟化
 
@@ -350,6 +355,7 @@ Link Order Changes function addresses
 #### 查表法 Table Lookup
 
 - optimize harmonic mean evaluation in hll::estimate_cardinality <https://github.com/StarRocks/starrocks/pull/16351>
+- Make your lookup table do more <https://commaok.xyz/post/lookup_tables/>
 
 #### 编译期运算  constexpr
 
@@ -404,9 +410,12 @@ std::inplace_merge 是原地 Merge，相比 std::merge 更省内存
 
 <https://github.com/simdjson/simdjson>
 
-
 ### 不同的指令集
 
 High-performance load-time implementation Selection:
 
 <https://github.com/CppCon/CppCon2022/blob/main/Presentations/Load-Time-Function-Selection.pdf>
+
+### 数学相关
+
+- Computing the number of digits of an integer even faster: <https://lemire.me/blog/2021/06/03/computing-the-number-of-digits-of-an-integer-even-faster/>

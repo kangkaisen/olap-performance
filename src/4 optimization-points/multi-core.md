@@ -32,6 +32,19 @@ do {
 
 <https://www.singlestore.com/blog/common-pitfalls-in-writing-lock-free-algorithms/>
 
+#### Lock-Free Queue
+可以支持高效并发的写操作和较少的读操作。
+
+无锁队列的基本思想是使用原子操作和 CAS（Compare-and-Swap）操作来实现并发安全的插入和删除操作，而无需使用显式的锁来保护共享数据。
+
+#### Epoch Based Reclamation
+
+EBR 适用于读操作频繁、写操作相对较少且需要回收的内存区域较小的场景。
+
+#### Read-Copy Update (RCU)
+
+它适用于读操作频繁、写操作相对较少且修改的数据较小的场景。
+
 ## 协程
 
 - 避免阻塞等待
