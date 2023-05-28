@@ -9,6 +9,12 @@ icon: creative
 
 <https://www.brendangregg.com/perf.html>
 
+## coz-profiler
+
+<https://github.com/plasma-umass/coz>
+
+<https://github.com/CppCon/CppCon2020/blob/main/Presentations/performance_matters/performance_matters__emery_berger__cppcon_2020.pdf>
+
 ## eBPF
 
 ## VTune
@@ -23,15 +29,29 @@ icon: creative
 
 <https://github.com/iovisor/bcc>
 
-## pcm
+## pcm  Intel® Performance Counter Monitor
+
+<https://github.com/intel/pcm>
 
 ## pmu-tools
+
+<https://github.com/andikleen/pmu-tools>
 
 ## perf-tools
 
 ![perf-tools](https://github.com/brendangregg/perf-tools/raw/master/images/perf-tools_2016.png)
 
 <https://github.com/brendangregg/perf-tools>
+
+## Latencytop
+
+可以测试出内核态和用户态导致系统延迟的原因
+
+<https://www.latencytop.org/>
+
+## orbit C/C++ Performance Profiler
+
+<https://github.com/google/orbit>
 
 ## pprof
 
@@ -44,6 +64,32 @@ icon: creative
 <https://github.com/facebookincubator/BOLT>
 
 
+## C++
+
+### Compiler Explorer
+
+查询 C++ 代码编译成的 汇编代码
+
+<https://godbolt.org/>
+
+### Quick C++ Benchmark
+
+<https://quick-bench.com/q/eP40RY6zDK-eJFdSSPBINa0apTM>
+
+### Compare C++ Builds
+
+可以测试、比较不同 C++ 代码的编译开销（CPU、内存、I/O）
+
+<https://build-bench.com/b/47ciR2_jQ0RuAt2fy1Pnk66b3yM>
+
+### C++ Insights
+
+<https://cppinsights.io/>
+
+### C++ Micro Benchmark
+
+<https://github.com/google/benchmark>
+
 ## 性能压测工具
 
 ### mysqlslap
@@ -54,15 +100,9 @@ mysqlslap -u root --password=xxx -h 127.0.0.1 -P 888  0 -c 1 -i 1 --create-schem
 
 ### Jmeter
 
-## 在线网站
+## Cutter 逆向工程
 
-### godbolt.org
-
-<https://godbolt.org/>
-
-### quick-bench
-
-<https://quick-bench.com/>
+<https://github.com/rizinorg/cutter>
 
 
 

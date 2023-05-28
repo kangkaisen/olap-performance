@@ -103,6 +103,45 @@ icon: creative
 
 ### 不同介质的访问延迟数据
 
+```
+           0.5 ns - CPU L1 dCACHE reference
+           1   ns - speed-of-light (a photon) travel a 1 ft (30.5cm) distance
+           5   ns - CPU L1 iCACHE Branch mispredict
+           7   ns - CPU L2  CACHE reference
+          71   ns - CPU cross-QPI/NUMA best  case on XEON E5-46*
+         100   ns - MUTEX lock/unlock
+         100   ns - own DDR MEMORY reference
+         135   ns - CPU cross-QPI/NUMA best  case on XEON E7-*
+         202   ns - CPU cross-QPI/NUMA worst case on XEON E7-*
+         325   ns - CPU cross-QPI/NUMA worst case on XEON E5-46*
+      10,000   ns - Compress 1K bytes with Zippy PROCESS
+      20,000   ns - Send 2K bytes over 1 Gbps NETWORK
+     250,000   ns - Read 1 MB sequentially from MEMORY
+     500,000   ns - Round trip within a same DataCenter
+  10,000,000   ns - DISK seek
+  10,000,000   ns - Read 1 MB sequentially from NETWORK
+  30,000,000   ns - Read 1 MB sequentially from DISK
+ 150,000,000   ns - Send a NETWORK packet CA -> Netherlands
+|   |   |   |
+|   |   | ns|
+|   | us|
+| ms|
+```
+
+```
+执行典型指令     　　　　　　　　　　  1/1,000,000,000 秒 =1 纳秒
+从一级缓存中读取数据 　　　 　　　　   0.5 纳秒
+分支预测错误 　　　　　　    　　　　  5 纳秒
+从二级缓存中读取数据 　　　　　　　    7 纳秒
+互斥锁定 / 解锁 　　　　　　 　　　　  25 纳秒
+从主存储器中读取数据 　　    　　　　  100 纳秒
+在 1Gbps 的网络中发送 2KB 数据 　　   20,000 纳秒
+从内存中读取 1MB 数据 　　　　　　     250,000 纳秒
+从新的磁盘位置读取数据 ( 寻轨 ) 　　   8,000,000 纳秒
+从磁盘中读取 1MB 数据 　　　　　　     20,000,000 纳秒
+在美国向欧洲发包并返回 　　　　　　     150 毫秒 =150,000,000 纳秒
+```
+
 <https://colin-scott.github.io/personal_website/research/interactive_latency.html>
 
 ![memory-ssd-remote-speed](/memory-ssd-remote-speed.png)

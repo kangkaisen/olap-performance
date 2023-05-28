@@ -21,6 +21,26 @@ icon: creative
 * 含义要准确
 * 名称要合理
 
+#### latency
+
+get a sense of how many cycles it takes to get data
+from main memory and caches
+
+
+#### bandwidth
+
+get a sense of how much data CPU can bring
+from main memory and caches
+
+8 bytes × DDR frequency × memory channel, per CPU socket
+
+8 bytes × 2666 MHz × 6 channels = 128 GB/sec per socket
+128 × 4 sockets = 512 GB/sec in the entire node
+
+### 消除噪音
+
+如何构建零干扰 CPU Benchmark 环境 <https://decodezp.github.io/2019/02/20/quickwords16-noisy-free-benchmark-env/>
+
 ## 如何发现不明显的性能回退
 
 <https://github.com/StarRocks/starrocks/pull/23300>

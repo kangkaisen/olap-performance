@@ -11,6 +11,8 @@ icon: creative
 
 ## Lock
 
+### SpinLock
+
 ### 分段锁
 
 - <https://github.com/apache/doris/pull/3222>
@@ -31,6 +33,12 @@ do {
 <https://www.singlestore.com/blog/common-pitfalls-in-writing-lock-free-algorithms/>
 
 ## 协程
+
+- 避免阻塞等待
+- 更高的并发性
+- 减少上下文切换
+- 更好的资源利用
+
 
 仅花200行代码，如何将60万行的RocksDB改造成协程  <https://mp.weixin.qq.com/s/WbR7dN7wVdVEpB8wHBbxCw>
 

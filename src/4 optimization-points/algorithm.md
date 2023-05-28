@@ -8,6 +8,11 @@ icon: creative
 ### 反向二分搜索
 <https://www.vldb.org/pvldb/vol15/p3472-yu.pdf>
 
+## 数据结构
+
+### Vector
+<https://github.com/facebook/folly/blob/main/folly/small_vector.h>
+
 
 ## 聚合
 
