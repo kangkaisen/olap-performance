@@ -218,6 +218,5 @@ MPP 是大规模并行计算的简称，核心做法是将查询 Plan 拆分成�
 
 ### 优化点
 
-1. 先解释执行，然后异步编译查询，编译完成后，将解释执行切换到 编译好的 Native Code 执行
-2. Plan Cache：将相同 pattern 的SQL 编译后的代码模板 Cache 下来，避免重复编译，可以选择 Cache 在
-memory 或者 disk 上
+1. 先解释执行，然后异步编译查询，编译完成后，将解释执行切换到 编译好的 Native Code 执行 <https://github.com/cmu-db/peloton-design/blob/master/bytecode_interpreter/bytecode_interpreter.md>
+2. Plan Cache：将相同 pattern 的SQL 编译后的代码模板 Cache 下来，避免重复编译，可以选择 Cache 在 memory 或者 disk 上。   <https://github.com/cmu-db/peloton-design/blob/master/codegen_cache/codegen_cache.md>

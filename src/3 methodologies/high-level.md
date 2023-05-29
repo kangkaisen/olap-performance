@@ -9,9 +9,10 @@ icon: creative
 具体到数据库层面的优化，我们可以分为 High Level 和 Low Level 的两大类优化。 High Level 的优化主要包括：
 
 1. 架构：比如是存储分离还是存算一体，比如 ServerLess，比如是分布式 Cache 还是 Local Cache
-2. 多机 Scale Out 的能力 ：查询能不能充分利用多机的资源，查询性能 能不能随着节点 Scale Out 成比例提升
-3. 多核 Scale Up 的能力：查询能不能充分利用多核的资源，查询性能 能不能随着核数 Scale Up 成比例提升
-4. 执行策略：比如聚合，Join 是 Sort Based，还是 Hash Based，比如 CTE Reused，比如聚合下推
-5. 执行模型：比如是否支持向量化，是否支持 Code gen，是Push 还是 Pull 等
+2. 软硬一体：让软件可以充分发挥硬件的潜力，根据硬件的特点设计专门的软件，也可以针对特定的应用场景和软件设计专门的硬件
+3. 多机 Scale Out 的能力 ：查询能不能充分利用多机的资源，查询性能 能不能随着节点 Scale Out 成比例提升
+4. 多核 Scale Up 的能力：查询能不能充分利用多核的资源，查询性能 能不能随着核数 Scale Up 成比例提升
+5. 执行策略：比如聚合，Join 是 Sort Based，还是 Hash Based，比如 CTE Reused，比如聚合下推
+6. 执行模型：比如是否支持向量化，是否支持 Code gen，是Push 还是 Pull 等
 
 

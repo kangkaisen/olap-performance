@@ -84,6 +84,19 @@ StarRocks 对 Nullable 的优化主要体现在下面几点：
 
 <http://mysql.taobao.org/monthly/2023/01/01/>
 
+### 聚合算子复用
+
+比如对于下面的 SQL:
+
+```
+SELECT AVG(x), SUM(x) FROM table
+```
+
+我们可以让 AVG(x) 复用 SUM(x) 的计算结果，减少计算量
+
+### Primary Key 相关优化
+
+
 ## 常见的 CBO 优化
 
 ### 多阶段聚合优化

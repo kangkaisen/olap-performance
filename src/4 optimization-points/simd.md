@@ -19,6 +19,32 @@ icon: creative
 
 ## SIMD 优化案例
 
+### SIMD text parsing
+
+### SIMD data filtering
+
+### SIMD string operations
+
+### SIMD json
+
+### SIMD join runtime filter
+
+### SIMD hash table probe
+
+### SIMD memcpy
+
+### SIMD memcmp
+
+### SIMD case when
+
+### SIMD gather
+
+### SIMD branchless
+
+### SIMD filter
+
+### SIMD aggregate
+
 ### 如何更好地触发向量化
 
 #### 循环外提

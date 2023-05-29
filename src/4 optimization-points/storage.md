@@ -9,7 +9,9 @@ icon: creative
 
 ### 前缀索引
 
-### ZoneMap 索引
+### ZoneMap 索引 （块索引）
+
+块级索引，是以块为单位，记录块内元数据的索引（最大值、最小值、空值、COUTN、SUM、相关性等）
 
 ### BloomFilter 索引
 
@@ -39,6 +41,11 @@ vm.dirty_expire_centisecs
 ## 异步 IO
 
 Magma: A High Data Density Storage Engine Used in Couchbase <https://www.vldb.org/pvldb/vol15/p3496-lakshman.pdf>
+
+IO异步化对于高性能的网络编程、服务器应用程序、多线程和多进程编程等场景非常有用，可以避免因IO阻塞而导致的资源浪费和性能瓶颈。它允许程序更加高效地利用计算资源，并提高系统的并发能力和响应性能。
+
+## IO 多路复用
+
 
 ## Zero Copy
 
@@ -86,6 +93,12 @@ ssize_t sendfile(
 ## 表达式下推存储层
 
 ## Compaction
+
+## Prefetch or Predictive Pipelining
+
+根据访问模式，提前从存储层读取所需要的数据。
+
+在存储分离的架构，合理地 Prefetch S3 等分布式存储的文件，对 Scan 性能的优化更明显
 
 ## 硬件
 

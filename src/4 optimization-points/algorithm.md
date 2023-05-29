@@ -6,7 +6,12 @@ icon: creative
 ## 算法
 
 ### 反向二分搜索
+
 <https://www.vldb.org/pvldb/vol15/p3472-yu.pdf>
+
+### In Filter
+
+In 的数据量少时，可以用 Array 代替 HashSet
 
 ## 数据结构
 
