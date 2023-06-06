@@ -12,3 +12,16 @@ icon: creative
 
 ![snowflake-fragment-materialized](/snowflake-fragment-materialized.png)
 
+## 物化视图
+
+
+## 索引
+
+
+## 预聚合
+
+
+## 物化列
+
+![StarRocks Generated Column](https://blog.bcmeng.com/post/media/16856655073291/genarated%20column%20rationale.png)
+

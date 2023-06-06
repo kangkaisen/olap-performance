@@ -9,6 +9,8 @@ icon: creative
 
 ### 前缀索引
 
+![Predix Index Rationale ](https://blog.bcmeng.com/post/media/16856655073291/Predix%20Index%20Rationale%20.png)
+
 ### ZoneMap 索引 （块索引）
 
 块级索引，是以块为单位，记录块内元数据的索引（最大值、最小值、空值、COUTN、SUM、相关性等）
@@ -16,6 +18,40 @@ icon: creative
 ### BloomFilter 索引
 
 ### Bitmap 倒排索引
+
+#### StarRocks Bitmap Index Rationale
+
+![bitmap rationale ](https://blog.bcmeng.com/post/media/16856655073291/bitmap%20rationale%20.png)
+
+StarRocks 的 Bitmap Index 主要包括两部分内容：字典和 Bitmap 行号。 字典保存了原始值到编码 Id的映射，Bitmap 索引记录了每个编码 ID 到 Bitmap 行号的映射。
+
+#### StarRocks Bitmap Index Storage Format
+
+![bitmap format](https://blog.bcmeng.com/post/media/16856655073291/bitmap%20format.png)
+
+如上图所示，StarRocks 的字典部分和 Bitmap 行号部分都是以 Page 的格式存储，同时为了减少内存占用和加速索引，StarRocks 对字典和 Bitmap 的 Page 都建立了索引。
+
+当然，如果建 Bitmap 索引列的基数很低，Dict Data Page 和 Bitmap Data Page 只有一个的话，我们就不需要 Dict Index Page 和 Bitmap Index Page。
+
+#### Operation On Encode Data
+
+当 StarRocks 利用 Bitmap Index 进行过滤的时候，只需要先加载 Dict Index Page 和部分 Dict Data Page 即可，按照字典值进行快速过滤，无需解码数据，也无需把所有 Bitmap Data Page 一次性加载进来。
+
+**综上，由于 StarRocks 支持Bitmap 索引的索引和支持按照字典值进行快速过滤，即使 Bitmap Index 列的基数很高，Bitmap Index 整体磁盘存储很大，内存占用也很小。**
+
+#### Bitmap 索引内存缓存
+
+![bitmap memory cache](https://blog.bcmeng.com/post/media/16856655073291/bitmap%20memory%20cache.png)
+
+StarRocks 会保证所有的 Dict Index Page 和 Bitmap Index Page 一定在内存，并让尽可能多的 Dict Data Page 和 Bitmap Data Page 在内存，并保证 Bitmap Index 相关的 Page Cache 不被 Column 的数据冲掉。
+
+**这样在点查结果集较小的情况下，即使是第一次 Cold Query，StarRocks 也可以做到只需要一次 Disk Seek。**
+
+#### 自适应 Bitmap 索引
+
+当 StarRocks 发现 Bitmap 索引的选择度不高，需要 Seek 很多 Data Page 时，我们就会放弃使用 Bitmap 索引，直接顺序 Scan。
+
+### 让索引常驻内存
 
 ### 物化列
 
@@ -74,6 +110,12 @@ ssize_t sendfile(
 
 ## Segment 大小 / 文件大小
 
+[How Databricks improved query performance by up to 2.2x by automatically optimizing file sizes](https://www.databricks.com/blog/how-databricks-improved-query-performance)
+
+## 文件的个数
+
+太多的文件往往意味着太多的 IO 次数
+
 ## 文件的版本数
 
 ## 动态文件裁剪
@@ -99,6 +141,8 @@ ssize_t sendfile(
 根据访问模式，提前从存储层读取所需要的数据。
 
 在存储分离的架构，合理地 Prefetch S3 等分布式存储的文件，对 Scan 性能的优化更明显
+
+[Announcing the General Availability of Predictive I/O for Reads](https://www.databricks.com/blog/announcing-general-availability-predictive-io-reads.html)
 
 ## 硬件
 
