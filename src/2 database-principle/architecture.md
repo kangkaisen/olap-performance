@@ -17,3 +17,11 @@ icon: creative
 - 从 Data WareHouse  到 Data Lake, 再到 LakeHouse
 
 ![lakehouse](/lakehouse.png)
+
+
+## 架构层面的常见优化
+
+
+### Partitioning & Sharding
+
+### 读写分离

@@ -26,3 +26,7 @@ StarRocks 会首先确认 Scan Operator 所在的 Fragment 在哪些 BE 节点�
 当 FE 确定每个 PlanFragment 由哪个 BE 执行，每个 Tablet 查询哪个副本后，FE 就会将 PlanFragment 执行相关的参数通过 Thrift 的方式发送给 BE。
 
 目前 FE 对多个 PlanFragment 调度的方式是 All At Once 的方式，是按照自顶向下的方式遍历 PlanFragment 树，将每个 PlanFragment 的执行信息发送给对应的 BE。
+
+### 多资源多任务的统一调度
+
+![resource-scheduler](/resource-scheduler.png)

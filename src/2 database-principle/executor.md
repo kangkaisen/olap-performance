@@ -3,7 +3,13 @@ title: 查询执行器
 icon: creative
 ---
 
-查询执行器单核想要实现极致的查询性能，需要满足两点： 1 处理的数据尽可能少且尽可能快； 2 网络传输的数据尽可能少且尽可能快。查询执行器处理数据量的多和少完全由查询优化器决定，查询执行器本身几乎无法决定；查询执行器处理数据如何尽可能快，就是向量化执行器的执行，我们在下一小节单独讲。 网络传输时数据如何尽可能少，尽可能快，如下图所示：
+查询执行器单核想要实现极致的查询性能，需要满足两点：
+
+1 处理的数据尽可能少且尽可能快；
+
+2 网络传输的数据尽可能少且尽可能快。
+
+查询执行器处理数据量的多和少完全由查询优化器决定，查询执行器本身几乎无法决定；查询执行器处理数据如何尽可能快，就是向量化执行器的执行，我们在下一小节单独讲。 网络传输时数据如何尽可能少，尽可能快，如下图所示：
 
 ![starrcoks-network-fast](https://blog.bcmeng.com/post/media/16404977814611/starrcoks-network-fast.png)
 
@@ -16,6 +22,12 @@ icon: creative
 ![starrocks-dict-improve](https://blog.bcmeng.com/post/media/16404977814611/starrocks-dict-improve.png)
 
 如上图所示，对于SQL Group By City, Platform, 如果 City, Platform 都是低基数字符串，我们就可以将对两个字符串列的 Hash 聚合变为针对两个 Int 列的 Hash 聚合，这样在 Scan, Shuffle，Hash，Equal，Memcpy 等多个重要操作上都会变快很多，我们实测整体查询性能可以有 3 倍的提升。
+
+## 最理想的执行模型
+
+- 充分利用多核能力同时处理一个查询
+- 每个线程执行查询编译后的 Plan
+- 查询编译的 Plan 触发向量化操作
 
 ## Push VS Pull
 
@@ -220,3 +232,9 @@ MPP 是大规模并行计算的简称，核心做法是将查询 Plan 拆分成�
 
 1. 先解释执行，然后异步编译查询，编译完成后，将解释执行切换到 编译好的 Native Code 执行 <https://github.com/cmu-db/peloton-design/blob/master/bytecode_interpreter/bytecode_interpreter.md>
 2. Plan Cache：将相同 pattern 的SQL 编译后的代码模板 Cache 下来，避免重复编译，可以选择 Cache 在 memory 或者 disk 上。   <https://github.com/cmu-db/peloton-design/blob/master/codegen_cache/codegen_cache.md>
+
+
+## 向量化 VS 查询编译
+
+* Data-centric is better for "calculation-heavy" queries with few cache misses
+* Vectorization is slightly better at hiding cache miss latencies

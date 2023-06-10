@@ -2,9 +2,39 @@
 title: NetWork
 icon: creative
 ---
+## 基础知识
 
+### Pin network queue
+
+"Pin network queue"（固定网络队列）是一种网络优化技术，用于将网络流量绑定到特定的网络队列或核心，以减少处理延迟、提高处理效率和提高网络吞吐量
+
+
+
+## 工具
+
+### F-Stack
+
+<https://github.com/F-Stack/f-stack>
 
 ## By Pass kernel
+
+### 用户态套接字（User-level Sockets）
+
+使用用户态套接字库（如 DPDK、Netmap、AF_XDP 等），在用户空间实现网络协议栈，绕过内核网络协议栈。用户态套接字允许应用程序直接接触到网络数据包，并自行处理和传递数据。
+
+### 网络设备驱动（Network Device Drivers）
+
+定制高性能的网络设备驱动程序，通过直接与网卡硬件进行交互，绕过内核网络协议栈。这种方法通常需要针对特定的硬件进行开发，以实现自定义的网络协议栈。
+
+### RDMA（Remote Direct Memory Access）
+
+RDMA 是一种远程直接内存访问技术，它允许应用程序直接在远程主机之间进行内存访问，绕过操作系统的协议栈。RDMA 提供了低延迟和高吞吐量的网络通信能力，适用于高性能计算和分布式存储等领域。
+
+
+### 用户态数据包处理库（User-space Packet Processing Libraries）
+
+使用用户态数据包处理库（如 libpcap、PF_RING、Snabb Switch 等），可以直接在用户空间捕获和处理网络数据包，避免了内核空间和用户空间之间的上下文切换。
+
 
 ### DPDK
 

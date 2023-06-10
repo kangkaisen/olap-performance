@@ -3,6 +3,10 @@ title: SIMD
 icon: creative
 ---
 
+## 注意事项
+
+1. AVX-512 is not always faster than AVX2. 原因是一些 CPU 可能会降频，还有编译器会 prefer  256-bit SIMD operations
+
 ## SIMD 基础知识
 
 ### What SIMD
@@ -50,5 +54,11 @@ icon: creative
 #### 循环外提
 
 <https://github.com/StarRocks/starrocks/pull/14510>
+
+#### 循环展开
+
+## 参考资料
+
+- <https://15721.courses.cs.cmu.edu/spring2023/slides/08-vectorization.pdf>
 
 

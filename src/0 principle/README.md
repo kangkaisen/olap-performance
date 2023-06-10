@@ -166,6 +166,7 @@ SSD could be only 600 MB/sec.
 ## 性能优化相关的理论
 
 ### Little‘s Law
+
 稳定的系统中同时被服务的用户数量等于用户到达系统的速度乘以每个用户在系统中驻留的时间，适用于所有需要排队的场景。
 
 系统中物体的平均数量( L )等于物体离开系统的平均速率( v )和每个物体在系统中停留的平均时间( W)的乘积。
@@ -176,4 +177,5 @@ SSD could be only 600 MB/sec.
 
 从上图这个曲线可以看到：在系统资源没有到瓶颈之前：请求并发数越高，系统资源利用率越高，吞吐量越高，响应时间基本不变，但是当某个系统资源达到瓶颈时，吞吐量会明显下降，响应时间明显增大。
 
-<https://www.infoq.cn/article/uzfdjvym5vepra8doxyg>
+- [Why User-Mode Threads Are Good for Performance](https://www.p99conf.io/session/why-user-mode-threads-are-good-for-performance/)
+- [跟我一起认识 Little’s Law](https://www.infoq.cn/article/uzfdjvym5vepra8doxyg)

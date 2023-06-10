@@ -36,6 +36,8 @@ GROUP BY day
 
 ## 资源隔离
 
+查询，导入，Compaction, Schema Change, 统计信息收集，数据均衡 等多种任务资源相互影响
+
 ## 并发控制
 
 ## 大查询

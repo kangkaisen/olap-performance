@@ -33,6 +33,10 @@ icon: creative
 
 很多时候，性能的瓶颈并不是在 CPU 执行本身，而是在 IO，网络，Lock 上，这时候我们就需要进行 Off CPU  分析，而且这时候基于 Sampling 的性能工具往往没有效果，我们需要使用基于 Trace 的 性能工具，比如 eBPF。详情大家可以参考 <https://www.brendangregg.com/offcpuanalysis.html>
 
+<https://danluu.com/perf-tracing/>
+
+动态追踪的事件源根据事件类型不同，主要分为三类。静态探针，动态探针以及硬件事件。
+
 ### 3.6 Intel 的 Top-down 分析方法
 
 ![](https://blog.bcmeng.com/post/media/16795404287791/16806903002948.jpg)

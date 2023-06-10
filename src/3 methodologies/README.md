@@ -21,6 +21,16 @@ icon: creative
 - 《A Top-Down Method for Performance Analysis and Counters Architecture》
 - <https://andrewei1316.github.io/2020/12/20/top-down-performance-analysis/>
 
+
+## Use 方法
+
+USE 是 Utilization（利用率）、Saturation（饱和度）和 Errors（错误）的缩写。
+
+USE 方法的目标是通过评估和关注系统的利用率、饱和度和错误情况，来定位和解决性能问题。通过收集和分析这些指标，可以帮助确定性能瓶颈的来源，并采取相应的优化措施，以提高系统的性能和可扩展性。
+
+
+<https://www.brendangregg.com/USEmethod/use-linux.html>
+
 ## Compute/Data Ratio
 
 - If data ≫ cache for such an algorithm, the algorithm’s

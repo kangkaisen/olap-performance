@@ -7,6 +7,14 @@ icon: creative
 
 ## 索引
 
+### Hash 索引
+
+### B+ Tree 索引
+
+### Radix tree 索引
+
+[存储系统中内存索引结构的选择]( <https://mp.weixin.qq.com/s/-lPJNRq4UdYYqeSpHPXfLg>)
+
 ### 前缀索引
 
 ![Predix Index Rationale ](https://blog.bcmeng.com/post/media/16856655073291/Predix%20Index%20Rationale%20.png)
@@ -101,6 +109,10 @@ ssize_t sendfile(
 ## IO 多路复用
 
 ## 动态调整 IO 并行度
+
+## IO 调度
+
+[A New IO Scheduler Algorithm for Mixed Workloads](https://www.p99conf.io/session/a-new-io-scheduler-algorithm-for-mixed-workloads/)
 
 ## Scan 优先级
 

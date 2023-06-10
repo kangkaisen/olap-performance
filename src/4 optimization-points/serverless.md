@@ -3,6 +3,13 @@ title: Serverless 优化点
 icon: creative
 ---
 
+## 弹性
+
+## Scale Out 能力
+
+## 虚拟化的影响
+
+<https://www.p99conf.io/session/cutting-through-the-fog-of-virtualization/>
 
 ## 对象存储
 
