@@ -14,6 +14,7 @@
 7. 性能测试
 8. 生产环境的性能难题
 9. 学习资料
+10. 技术创新和工程创新
 
 
 ## 为什么发起这个项目
@@ -36,12 +37,6 @@
 
 1. 小改动可以直接在  <https://perf.bcmeng.com/> 网页上修改
 2. 大改动可以参考 <https://theme-hope.vuejs.press/zh/cookbook/tutorial/> 在本地修改
-
-## 贡献者
-
-感谢每一位贡献者
-
-[![img](https://contrib.rocks/image?repo=kangkaisen/olap-performance)](https://github.com/kangkaisen/olap-performance/graphs/contributors)
 
 ## Star History
 
