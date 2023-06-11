@@ -138,6 +138,18 @@ ssize_t sendfile(
 
 ## 压缩
 
+### Gzip
+
+### LZ4
+
+### Brotli
+
+### SNAPPY
+
+### ZSTD
+
+### BZIP2
+
 ## 编码
 
 ## 预取

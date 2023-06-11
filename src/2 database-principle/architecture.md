@@ -25,3 +25,11 @@ icon: creative
 ### Partitioning & Sharding
 
 ### 读写分离
+
+### 特定场景启动专门的 Service
+
+#### Bitmap 用户行为分析 Service
+
+#### Snowflake Search Optimization Service
+
+[Snowflake Search Optimization Service](https://docs.snowflake.com/en/user-guide/search-optimization-service)
