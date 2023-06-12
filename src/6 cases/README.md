@@ -5,6 +5,9 @@ icon: creative
 
 ## 性能优化案例
 
+### 高并发点查优化
+
+
 ### C 10M 的解
 
 不要让OS内核执行所有繁重的任务：将数据包处理、内存管理、处理器调度等任务从内核转移到应用程序高效地完成，让诸如Linux这样的OS只处理控制层，数据层完全交给应用程序来处理。
@@ -28,6 +31,11 @@ icon: creative
 ### RoaringBitmap 性能优化
 
 [WeOLAP 亚秒级实时数仓 —— BitBooster 10倍查询优化实践](https://mp.weixin.qq.com/s/tJQoNRZ5UDJ_IASZLlhB4Q)
+
+### Java GC 导致低并发下性能更差
+
+[Java GC 导致应用只能扛住高并发却扛不住低并发](https://mp.weixin.qq.com/s/84QwT_aDD7gnu9QcFUoatQ)
+
 
 
 

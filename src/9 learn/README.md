@@ -10,6 +10,7 @@ icon: creative
 2. [p99conf](https://www.p99conf.io/)
 3. [OpenResty 博客](https://blog.openresty.com.cn/cn/tags/dynamic-tracing/)
 4. [CppCon](https://github.com/CppCon) 有大量 C++ 性能优化的优质分享
+5. [heapdump 性能优化专题](https://heapdump.cn/monographic/all)
 
 ## 网页
 
@@ -21,13 +22,15 @@ icon: creative
 1. 《性能之巅：洞悉系统、企业与云计算》
 2. [《Performance Analysis and Tuning on Modern CPU》](https://github.com/dendibakh/perf-book)   <https://faculty.cs.niu.edu/~winans/notes/patmc.pdf> 在线 PDF
 3. [《The Linux Perf Master》](https://riboseyim.gitbook.io/perf/)
-4. 《Architecting and Deploying DB2 with BLU Acceleration》第一章节 <https://www.redbooks.ibm.com/redbooks/pdfs/sg248212.pdf>
+4. [《计算之魂》](https://book.douban.com/subject/35641088//)
+5. 《Architecting and Deploying DB2 with BLU Acceleration》第一章节 <https://www.redbooks.ibm.com/redbooks/pdfs/sg248212.pdf>
 
 ## 高性能开源项目
 
 1. [StarRocks](https://github.com/StarRocks/starrocks)
-2. [Questdb](https://github.com/questdb/questdb)
-3. [Seastar](https://github.com/scylladb/seastar)
+2. [brpc](https://github.com/apache/brpc)
+3. [Questdb](https://github.com/questdb/questdb)
+4. [Seastar](https://github.com/scylladb/seastar)
 
 
 ## 资料

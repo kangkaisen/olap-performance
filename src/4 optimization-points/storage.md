@@ -84,9 +84,11 @@ vm.dirty_expire_centisecs
 
 ## 异步 IO
 
-Magma: A High Data Density Storage Engine Used in Couchbase <https://www.vldb.org/pvldb/vol15/p3496-lakshman.pdf>
-
 IO异步化对于高性能的网络编程、服务器应用程序、多线程和多进程编程等场景非常有用，可以避免因IO阻塞而导致的资源浪费和性能瓶颈。它允许程序更加高效地利用计算资源，并提高系统的并发能力和响应性能。
+
+- [Magma: A High Data Density Storage Engine Used in Couchbase](https://www.vldb.org/pvldb/vol15/p3496-lakshman.pdf)
+
+* [Use Coroutines for Asynchronous I/O to Hide I/O Latencies and Maximize the Read Bandwidth](https://db.in.tum.de/~fent/papers/coroutines.pdf?lang=en)
 
 ## IO 多路复用
 
@@ -108,7 +110,7 @@ ssize_t sendfile(
 
 ## IO 多路复用
 
-## 动态调整 IO 并行度
+## IO 并行度 自适应
 
 ## IO 调度
 

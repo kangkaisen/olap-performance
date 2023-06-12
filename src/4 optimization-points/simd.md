@@ -39,6 +39,8 @@ icon: creative
 
 ### SIMD memcmp
 
+### SIMD memequal
+
 ### SIMD case when
 
 ### SIMD gather
@@ -47,7 +49,17 @@ icon: creative
 
 ### SIMD filter
 
+[Starrocks optimize filter_range when avx512f available](https://github.com/StarRocks/starrocks/pull/14328/files)
+
 ### SIMD aggregate
+
+### SIMD string to integer parser
+
+[Faster SIMD Integer Parsing](https://kholdstare.github.io/technical/2020/05/26/faster-integer-parsing.html)
+
+### SIMD std::find & memchr
+
+[SIMD std::find and memchr Optimizations](https://gms.tf/stdfind-and-memchr-optimizations.html)
 
 ### 如何更好地触发向量化
 
@@ -56,6 +68,11 @@ icon: creative
 <https://github.com/StarRocks/starrocks/pull/14510>
 
 #### 循环展开
+
+## 多平台多SIMD指令兼容
+
+[Automatic SIMD-instruction selection](https://github.com/milvus-io/knowhere/blob/main/src/simd/hook.cc)
+
 
 ## 参考资料
 

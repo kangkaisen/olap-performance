@@ -209,6 +209,8 @@ Link Order Changes function addresses
 
 ## Adaptive
 
+[数据库之美 —— 查询自适应执行](https://blog.bcmeng.com/post/adaptive.html)
+
 ### Adaptive Join Runtime Filters Selection
 
 ### Adaptive Streaming Aggregate
@@ -222,6 +224,10 @@ Link Order Changes function addresses
 ### Adaptive Encoding
 
 ### Adaptive Pipeline Parallelism
+
+### 资料
+
+<https://www.researchgate.net/publication/236345471_Adaptive_Query_Processing>
 
 ## 循环相关优化
 

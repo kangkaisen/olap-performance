@@ -96,6 +96,9 @@ SELECT AVG(x), SUM(x) FROM table
 
 ### Primary Key 相关优化
 
+### 冗余 Group By 消除
+
+### Sum 常量转 Count
 
 ## 常见的 CBO 优化
 
@@ -123,9 +126,15 @@ SELECT AVG(x), SUM(x) FROM table
 
 ### CTE 列裁剪
 
+### Agg 上拉
+
 ### Agg 下推 Join
 
 ### Agg 下推 GroupingSets
+
+### 窗口下推 Group By
+
+### 算子融合
 
 ### 物化视图选择与改写
 

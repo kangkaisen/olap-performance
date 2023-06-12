@@ -22,3 +22,8 @@ icon: creative
 针对云存储的限额等报错，需要自动重试
 
 ### Local Cache 加速
+
+
+## 资料
+
+[BigQuery under the hood: Behind the serverless storage and query optimizations that supercharge performance](https://cloud.google.com/blog/products/data-analytics/inside-bigquerys-serverless-optimizations)

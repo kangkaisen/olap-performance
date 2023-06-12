@@ -54,7 +54,8 @@ EBR 适用于读操作频繁、写操作相对较少且需要回收的内存区�
 - 更好的资源利用
 
 
-仅花200行代码，如何将60万行的RocksDB改造成协程  <https://mp.weixin.qq.com/s/WbR7dN7wVdVEpB8wHBbxCw>
+- [Use Coroutines for Asynchronous I/O to Hide I/O Latencies and Maximize the Read Bandwidth](https://db.in.tum.de/~fent/papers/coroutines.pdf?lang=en)
+- [仅花200行代码，如何将60万行的RocksDB改造成协程](https://mp.weixin.qq.com/s/WbR7dN7wVdVEpB8wHBbxCw)
 
 ## 调度
 

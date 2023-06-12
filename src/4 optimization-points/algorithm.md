@@ -23,13 +23,26 @@ In 的数据量少时，可以用 Array 代替 HashSet
 
 ### 两阶段 Streaming 聚合
 
+## Join
+
+### Hash Join
+
+### Sort Merge Join
+
+### Nest Loop Join
+
 ## Sort
 
 ### 多列 Sort
 
-<https://arrow.apache.org/blog/2022/11/07/multi-column-sorts-in-arrow-rust-part-1/>
+- [multi-column-sorts-in-arrow-rust-part-1](https://arrow.apache.org/blog/2022/11/07/multi-column-sorts-in-arrow-rust-part-1/)
+- [multi-column-sorts-in-arrow-rust-part-2](https://arrow.apache.org/blog/2022/11/07/multi-column-sorts-in-arrow-rust-part-2/)
 
-<https://arrow.apache.org/blog/2022/11/07/multi-column-sorts-in-arrow-rust-part-2/>
+### 并行 Sort
+
+[并行 Sort 算法 benchmark](https://github.com/liuyehcf/parallel-sort-benchmark/blob/master/benchmark.cpp)
+
+### 延迟物化
 
 ## Window
 
