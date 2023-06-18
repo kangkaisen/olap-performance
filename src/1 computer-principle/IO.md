@@ -6,6 +6,19 @@ icon: creative
 
 ## 基础知识
 
+### 索引节点和目录项
+
+### 磁盘相关概念
+
+### 虚拟文件系统
+
+### 文件系统 I/O
+
+### IO 栈
+
+### Page cache
+
+### Buffer cache
 
 ### io_uring
 
@@ -37,4 +50,44 @@ io_uring 提供了以下主要特性和优势：
 
 3. Buffer 的大小通常较小，而 Cache 的大小相对较大，因为 Cache 会尽可能多地存储经常访问的数据以提高性能
 
+## 性能指标
+
+### 容量
+
+### 缓存
+
+### 磁盘性能指标
+
+### IOPS计算公式
+
+### io 利用率 说明了啥
+
 ## 工具
+
+### iostat
+
+
+### pidstat
+
+
+### iotop
+
+
+### ioprofile
+
+
+### lsof
+
+
+### strace
+
+
+### opensnoop
+
+
+### dd
+
+
+### filetop
+
+
