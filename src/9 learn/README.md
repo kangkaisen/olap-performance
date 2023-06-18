@@ -10,7 +10,8 @@ icon: creative
 2. [p99conf](https://www.p99conf.io/)
 3. [OpenResty 博客](https://blog.openresty.com.cn/cn/tags/dynamic-tracing/)
 4. [CppCon](https://github.com/CppCon) 有大量 C++ 性能优化的优质分享
-5. [heapdump 性能优化专题](https://heapdump.cn/monographic/all)
+5. [Heapdump 性能优化专题](https://heapdump.cn/monographic/all)
+6. [Redhat 监控和管理系统状态和性能](https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/index)
 
 ## 网页
 
