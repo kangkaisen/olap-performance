@@ -129,6 +129,10 @@ sysbench --db-driver=mysql --mysql-host=<hostname> --mysql-port=<port> --mysql-u
 --threads=8 --time=10 oltp_run
 ```
 
+### dbbench
+
+<https://github.com/memsql/dbbench>
+
 ### pointer-chasing
 
 Utilities to measure read access times of caches, memory, and hardware prefetches for simple and fused operations

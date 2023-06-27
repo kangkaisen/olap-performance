@@ -58,3 +58,4 @@ icon: creative
 - [CMU Modern Analytical Database Systems](https://www.youtube.com/watch?v=7V1oi_8uvuM)
 - [Comparing Three Real-Time OLAP Databases: Apache Pinot, Apache Druid, and ClickHouse](https://startree.ai/blog/a-tale-of-three-real-time-olap-databases)
 - [Streaming 101 Revisited](https://docs.google.com/presentation/d/1dbCQiPNWnzWPbOvPQ0dQJHchsqQ899DacdBZDgZEUNA/edit#slide=id.p)
+- [Emerging Architectures for Modern Data Infrastructure](https://a16z.com/2020/10/15/emerging-architectures-for-modern-data-infrastructure-2020/)

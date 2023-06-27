@@ -26,4 +26,5 @@ icon: creative
 
 ## 资料
 
-[BigQuery under the hood: Behind the serverless storage and query optimizations that supercharge performance](https://cloud.google.com/blog/products/data-analytics/inside-bigquerys-serverless-optimizations)
+- [BigQuery under the hood: Behind the serverless storage and query optimizations that supercharge performance](https://cloud.google.com/blog/products/data-analytics/inside-bigquerys-serverless-optimizations)
+- [Making Data Clouds Smarter at Keebo:Automated Warehouse Optimization using Data Learning](https://dl.acm.org/doi/pdf/10.1145/3555041.3589681)
