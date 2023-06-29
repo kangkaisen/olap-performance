@@ -14,12 +14,14 @@ icon: creative
 
 ## 物化视图
 
+![Materialized View](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*zVx_6nevHzjg5EyK.jpg)
 
 ## 索引
 
 
 ## 预聚合
 
+![Aggregation Table](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*kO18EorGMGYJpjts7sQJPA.png)
 
 ## 物化列
 

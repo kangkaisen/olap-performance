@@ -41,6 +41,10 @@ icon: creative
 
 #### CPU 上下文
 
+#### CPU 指令执行的流程
+
+![cpu-instuction-flow](/cpu-instuction-flow.png)
+
 #### 指令级并行技术
 
 #### 乱序执行  out-of-order execution OOO
@@ -83,11 +87,13 @@ Cache, TLB, memory-bandwith limitation
 
 ### CPU Front-End
 
+![cpu-frontend-backend.](/cpu-frontend-backend.png)
+
 ### CPU Back-End
 
-### 指令执行的过程
+### CPU Time 计算公式
 
-###
+
 
 
 

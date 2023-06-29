@@ -38,6 +38,14 @@ StarRocks 对 Nullable 的优化主要体现在下面几点：
 
 ## 分区分桶裁剪
 
+### 分区裁剪
+
+![Partition Pruning](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*p7NxGw03IipP1nmiEd-FeA.png)
+
+### 分桶裁剪
+
+![Bucket Pruning](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*DQkZG1usDpfoZvvmn2PXZw.png)
+
 ## 常见的RBO 优化
 
 ### 各种表达式的重写和化简

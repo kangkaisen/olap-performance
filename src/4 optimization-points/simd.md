@@ -11,15 +11,48 @@ icon: creative
 
 ### What SIMD
 
+![what-simd](/what-simd.png)
+
+### 为什么向量化可以提升性能
+
+![cpu-time-vector](/cpu-time-vector.png)
+
 ### SIMD Registers
+
+![simd-registers](/simd-registers.png)
 
 ### Many Ways to Vectorize
 
+![ways-to-vector](/ways-to-vector.png)
+
 ### Compile Auto Vectorize
+
+- Countable loop
+- Function call should be inline or simple math function
+- No data dependencies
+- No complex conditions
+
+### Compile Hint Vectorize: Restrict
+
+![vector-restrict](/vector-restrict.png)
+
+Restrict Tells The Compile The Arrays In Distinct Locations In Memory
 
 ### How to Ensure SIMD Instructions Used
 
+![simd-used](/simd-used.png)
+
+![simd-used-2](/simd-used-2.png)
+
 ### Vector Intrinsics
+
+![vector-Intrinsics](/vector-Intrinsics.png)
+
+![vector-Intrinsics-2](/vector-Intrinsics-2.png)
+
+<https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html>
+
+![vector-Intrinsics-example](/vector-Intrinsics-example.png)
 
 ## SIMD 优化案例
 

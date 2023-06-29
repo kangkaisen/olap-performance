@@ -116,6 +116,8 @@ Pointer-chasing（指针追踪）是指在计算过程中频繁地通过指针�
 
 ### Local Join Runtime Filter
 
+![join-runtime-filter](/join-runtime-filter.png)
+
 ### Global Join Runtime Filter
 
 ### Top-N Runtime Filter
@@ -212,6 +214,8 @@ Link Order Changes function addresses
 [数据库之美 —— 查询自适应执行](https://blog.bcmeng.com/post/adaptive.html)
 
 ### Adaptive Join Runtime Filters Selection
+
+
 
 ### Adaptive Streaming Aggregate
 

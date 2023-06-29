@@ -19,11 +19,17 @@ icon: creative
 
 ![Predix Index Rationale ](https://blog.bcmeng.com/post/media/16856655073291/Predix%20Index%20Rationale%20.png)
 
+- 基于排序列
+- 索引粒度：几千行
+- 索引 Key: 一般有字节数的限制
+
 ### ZoneMap 索引 （块索引）
 
 块级索引，是以块为单位，记录块内元数据的索引（最大值、最小值、空值、COUTN、SUM、相关性等）
 
 ### BloomFilter 索引
+
+过滤条件是 = 和 In
 
 ### Bitmap 倒排索引
 
@@ -162,6 +168,10 @@ ssize_t sendfile(
 
 ## Compaction
 
+![compaction](http://static.zybuluo.com/kangkaisen/p4j5rfid7uzryuwb049upg27/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-01-28%20%E4%B8%8B%E5%8D%885.11.49.png)
+
+Compaction 如果不及时，会导致文件数过多，进而影响查询性能
+
 ## Prefetch or Predictive Pipelining
 
 根据访问模式，提前从存储层读取所需要的数据。
@@ -171,6 +181,10 @@ ssize_t sendfile(
 [Announcing the General Availability of Predictive I/O for Reads](https://www.databricks.com/blog/announcing-general-availability-predictive-io-reads.html)
 
 ## 硬件
+
+### 多块磁盘
+
+在成本相差不大的情况下，多块磁盘可以获得更高 IOPS 和吞吐
 
 ### NVMe
 

@@ -23,6 +23,12 @@ In 的数据量少时，可以用 Array 代替 HashSet
 
 ### 两阶段 Streaming 聚合
 
+![two-phase-agg](/two-phase-agg.png)
+
+![one-phase-agg](/one-phase-agg.png)
+
+![streaming-agg](/streaming-agg.png)
+
 ## Join
 
 ### Hash Join

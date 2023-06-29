@@ -9,7 +9,23 @@ icon: creative
 
 ![](https://blog.bcmeng.com/post/media/16795404287791/16806894404824.jpg)
 
-如上图所示，查询 Profile 是我们发现性能瓶颈点最常用的工具，从 Profile， 我们可以知道一个查询是慢在 plan 阶段，还是执行阶段，也能知道是哪个算子是执行瓶颈
+如上图所示，查询 Profile 是我们发现性能瓶颈点最常用的工具，从 Profile， 我们可以知道一个查询是慢在 plan 阶段，还是执行阶段，也能知道是哪个算子是执行瓶颈。
+
+从每个算子的关键性能指标，我们也可以知道慢的原因。
+
+常见的瓶颈点：
+
+1. 数据倾斜：关键同一个算子，或者同一个指标在不同机器实例的最大，最小值
+2. 是否触发分区分桶裁剪
+3. 是否命中期望的MV 或者 Rollup
+4. 谓词是否下推到存储层
+5. 谓词是否用到索引
+6. Join 的左右表顺序是否正确，是否是用小表构建 Hash 表
+7. Join 的分布式执行策略是否正确：Shuffle Join, Bucket Shuffle Join, Broadcast Join, Colocate Join, Replication Join
+8. 是否生产了 Runtime Filer, Runtime Filer 是否下推到存储层
+9. 是否有大量的网络数据传输
+10. 是否 Compaction 不及时导致文件数太多
+11. 并行度是否足够，是否用到了所有机器的资源，每个机器是否用到多核的资源
 
 ### 3.2 StarRocks Observability : Optimizer Trace
 
