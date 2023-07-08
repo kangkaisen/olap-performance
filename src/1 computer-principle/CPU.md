@@ -87,19 +87,20 @@ Cache, TLB, memory-bandwith limitation
 
 ### CPU Front-End
 
-![cpu-frontend-backend.](/cpu-frontend-backend.png)
+![cpu-frontend-backend](/cpu-frontend-backend.png)
 
 ### CPU Back-End
 
 ### CPU Time 计算公式
 
 
-
-
-
 ### CPU Cache
 
 [CPU Cache 一致性动图](https://www.scss.tcd.ie/Jeremy.Jones/VivioJS/caches/MESI.htm)
+
+#### CPU Cache 性能数据
+
+![cpu-cache-metric](/cpu-cache-metric.png)
 
 #### L1,L2,L3 cache
 

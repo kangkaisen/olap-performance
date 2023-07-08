@@ -7,6 +7,14 @@ icon: creative
 
 1. No profiled, Never optimize （只有能被度量的问题才能得到最终解决）
 
+## 基本认知
+
+### 系统和程序的瓶颈点会不断转移
+
+当我们消除当前的瓶颈点后，之前不是瓶颈的点就会变成新的瓶颈点
+
+![performance-bottleneck-vary](/performance-bottleneck-vary.png)
+
 ## 查询性能优化的意义
 
 对一个数据库产品来说：
@@ -86,6 +94,21 @@ icon: creative
 
 * 在批处理场景下，我们可以基于历史运行任务的信息去进行 History Base 的优化
 * 我们可以根据用户真实执行SQL的各种指标数据，结合机器学习，进行自动推荐物化视图，自动 clusting，优化执行计划等等
+
+4 Fuse Vectorized And Compilation
+
+Vectorized 和 Compilation 并不冲突， 我们可以在 Compilation 的时候生成向量化的代码
+
+在 Vectorized 引擎里面，下面这些场景，可以考虑用 Compilation 加速：
+
+1. Complex Expression
+2. UDF, UDAF, UDTF
+3. 多列 Sort, Aggregate
+4. GPU
+
+
+5  用 GPU， FPGA 等硬件加速计算
+
 
 ## 如何成长为数据库性能优化专家
 

@@ -40,6 +40,10 @@ icon: creative
 
 ### Inline
 
+### Memory Manage 内存管理
+
+![hll-memory-manage](/hll-memory-manage.png)
+
 ### memcpy
 
 内存相关的操作对性能影响会比较大，memcpy 基础操作的优化点：
@@ -104,6 +108,8 @@ icon: creative
 ### Resize No Initialize
 
 ### Copy To Move
+
+![copy-to-move](/copy-to-move.png)
 
 ### Std::vector
 

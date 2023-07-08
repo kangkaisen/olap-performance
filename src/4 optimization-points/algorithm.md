@@ -62,3 +62,9 @@ In 的数据量少时，可以用 Array 代替 HashSet
 
 ### Window 谓词下推
 
+## Sketch
+
+### DDSketch
+
+- [DDSketch: A Fast and Fully-Mergeable Quantile Sketch with Relative-Error Guarantees](https://arxiv.org/pdf/1908.10693.pdf)
+

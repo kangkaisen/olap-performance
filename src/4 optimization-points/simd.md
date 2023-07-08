@@ -58,6 +58,10 @@ Restrict Tells The Compile The Arrays In Distinct Locations In Memory
 
 ### SIMD text parsing
 
+### SIMD time stamps parsing
+
+[Parsing time stamps faster with SIMD instructions](https://lemire.me/blog/2023/07/01/parsing-time-stamps-faster-with-simd-instructions/)
+
 ### SIMD data filtering
 
 ### SIMD string operations
@@ -67,6 +71,18 @@ Restrict Tells The Compile The Arrays In Distinct Locations In Memory
 ### SIMD join runtime filter
 
 ### SIMD hash table probe
+
+![simd-hash-probe-1](/simd-hash-probe-1.png)
+
+![simd-hash-probe-2](/simd-hash-probe-2.png)
+
+![simd-hash-probe-3](/simd-hash-probe-3.png)
+
+![simd-hash-probe-4](/simd-hash-probe-4.png)
+
+### SIMD Join
+
+![simd-hash-join](/simd-hash-join.png)
 
 ### SIMD memcpy
 
@@ -80,7 +96,15 @@ Restrict Tells The Compile The Arrays In Distinct Locations In Memory
 
 ### SIMD branchless
 
+![simd-branch](/simd-branch.png)
+
+<https://www.youtube.com/watch?v=g-WPhYREFjk>
+
 ### SIMD filter
+
+![simd-filter-1](/simd-filter-1.png)
+
+![simd-filter-2](/simd-filter-2.png)
 
 [Starrocks optimize filter_range when avx512f available](https://github.com/StarRocks/starrocks/pull/14328/files)
 
@@ -93,6 +117,14 @@ Restrict Tells The Compile The Arrays In Distinct Locations In Memory
 ### SIMD std::find & memchr
 
 [SIMD std::find and memchr Optimizations](https://gms.tf/stdfind-and-memchr-optimizations.html)
+
+### SIMD bitshuffle
+
+[Dynamic bit shuffle using SIMD AVX-512](https://lemire.me/blog/2023/06/29/dynamic-bit-shuffle-using-avx-512/)
+
+### SIMD ascii Substring
+
+![simd-ascii-substring](/simd-ascii-substring.png)
 
 ### 如何更好地触发向量化
 

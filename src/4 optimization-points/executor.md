@@ -22,11 +22,21 @@ icon: creative
 
 ## 列式布局
 
+![memory-column](/memory-clolumn.png)
+
 ## Batch 操作
 
 ## 按列处理
 
+![vector-operato-expression](/vector-operato-expression.png)
+
+![vector-operator](/vector-operator.png)
+
+![vector-expression](/vector-expression.png)
+
 ### Shuffle By Column
+
+![shuffle-by-column](/shuffle-by-column.png)
 
 ## 虚函数调用
 
@@ -49,6 +59,8 @@ icon: creative
 <https://stackoverflow.com/questions/17095324/fastest-way-to-determine-if-an-integer-is-between-two-integers-inclusive-with>
 
 ## Chunk Size
+
+![vector-chunk-size](/vector-chunk-size.png)
 
 ## Query Cache
 
@@ -74,6 +86,14 @@ pack data，尽可能 touch 足够小的内存
 ### Block
 
 ### Prefetch
+
+#### Hardware Prefetch
+
+![hardware-prefetch](/hardware-prefetch.png)
+
+#### Software Prefetch
+
+![starrocks-prefetch](/starrocks-prefetch.png)
 
 ### Code Cache
 
@@ -162,6 +182,10 @@ Pointer-chasing（指针追踪）是指在计算过程中频繁地通过指针�
 
 ## Operations on Encoded Data
 
+![operator-encode-1](/operator-encode-1.png)
+
+![operator-encode-2](/operator-encode-2.png)
+
 <https://archived.docs.singlestore.com/v7.0/concepts/understanding-ops-on-encoded-data/>
 
 可以操作数据的编码方式：
@@ -215,7 +239,7 @@ Link Order Changes function addresses
 
 ### Adaptive Join Runtime Filters Selection
 
-
+![adaptive-join-runtime-filter](/adaptive-join-runtime-filter.png)
 
 ### Adaptive Streaming Aggregate
 
@@ -228,6 +252,11 @@ Link Order Changes function addresses
 ### Adaptive Encoding
 
 ### Adaptive Pipeline Parallelism
+
+- BE CPU Core Number
+- Query Type
+- Data Distribution
+- Statistical Information
 
 ### 资料
 

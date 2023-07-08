@@ -33,6 +33,21 @@ USE 方法的目标是通过评估和关注系统的利用率、饱和度和错�
 
 <https://www.brendangregg.com/USEmethod/use-linux.html>
 
+## Roofline Performance Model
+
+Roofline模型由两个关键部分组成：屋顶线和性能瓶颈点。屋顶线表示了硬件平台的性能上限，而性能瓶颈点表示程序在特定硬件平台上受限的性能点。
+
+屋顶线通常由处理器的理论峰值性能和内存带宽组成，可以用于表示硬件平台的性能限制。性能瓶颈点是程序中的计算操作或内存访问，它们的性能受限于硬件平台的特定特性，如计算单元的吞吐量或内存延迟。
+
+通过将程序的性能数据映射到屋顶线上，可以确定程序的性能瓶颈所在。如果性能数据在屋顶线以下，意味着程序未能充分利用硬件资源，存在优化的潜力。如果性能数据接近或超过屋顶线，可能表示程序已经达到了硬件平台的性能限制，进一步的优化可能需要改变算法或采用其他优化技术。
+
+## Static Performance Analysis
+
+
+## Last Branch Record
+
+<https://easyperf.net/blog/2019/05/06/Estimating-branch-probability>
+
 ## Compute/Data Ratio
 
 - If data ≫ cache for such an algorithm, the algorithm’s

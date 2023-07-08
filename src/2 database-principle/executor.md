@@ -83,6 +83,15 @@ Push 模型中，Producers 驱动整个流程；Pull 模型中，Consumers 驱�
 
 ## 向量化执行器
 
+### What is Vectorized Query Engine
+
+![what-vector-engine](/what-vector-engine.png)
+
+1. Data Use **Column Layout All Time**: Disk, Memory, NetWork
+2. Data should be processed by **batch way** (4096 rows)
+3. Data should be computed by **column formant**, not row formant
+4. Should use **SIMD Instructions** as much as possible
+
 ![starrcoks-vector-1](https://blog.bcmeng.com/post/media/16404977814611/starrcoks-vector-1.png)
 
 向量化在实现上主要是算子和表达式的向量化，上图一是算子向量化的示例，上图二是表达式向量化的示例，算子和表达式向量化执行的核心是**批量按列执行**，批量执行，相比与单行执行，可以有更少的虚函数调用，更少的分支判断；按列执行，相比于按行执行，对 CPU Cache 更友好，更易于SIMD优化。
@@ -141,7 +150,7 @@ Top-down Microarchitecture Analysis Method 的具体内容大家可以参考相�
 
 再对应到之前的 CPU 时间计算公式，我们就可以得出如下结论：
 
-![](/vector.png)
+![vector](/vector.png)
 
 而数据库向量化对以上 4 点都会有提升，后文会有具体解释，至此，本文从原理上解释了为什么向量化可以提升数据库性能。
 
@@ -149,7 +158,7 @@ Top-down Microarchitecture Analysis Method 的具体内容大家可以参考相�
 
 数据库的向量化在工程上主要体现在算子和表达式的向量化，而算子和表达式的向量化的关键点就一句话：Batch Compute By Column, 如下图所示：
 
-![](/batch-column.png)
+![batch-column](/batch-column.png)
 
 对应 Intel 的 Top-down 分析方法，Batch 优化了 分支预测错误和指令 Cache Miss，By Column 优化了 数据 Cache Miss，并更容易触发 SIMD 指令优化。
 
@@ -195,6 +204,24 @@ Batch 这一点其实比较好做到，难点是对一些重要算子，比如 J
 
 ## Pipeline 多核执行
 
+### What's pipeline
+
+![what-pipeline](/what-pipeline.png)
+
+Inside one pipeline, there is no data materialize,Fragment decomposes into pipelines;  Pipeline contains multi operators
+
+![pipeline-operator](/pipeline-operator.png)
+
+A pipeline is a chain consists of operators:
+
+- First operator is source operator,  has only one output.
+- Last operator is sink operator, has only one input.
+- Operators excluding source/sink operators has only one input and one output.
+- Operators except sink operator works in the chunk-at-a-time fashion.
+- For two adjacent operators, chunk is produced by the preceding, consumed by the following
+
+### Pipeline 引擎的关键点
+
 - Yield
 - 用户空间
 - Morsel-Driven
@@ -204,7 +231,7 @@ Batch 这一点其实比较好做到，难点是对一些重要算子，比如 J
 
 ![pipeline-task](/pipeline-task.png)
 
-Operator 的状态
+### Operator 的状态
 
 - Ready
 - Running

@@ -4,6 +4,7 @@ icon: creative
 ---
 
 ## 列存
+![StarRocks Segment File](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1HKGBMWthEkOqbt2VbhvVA.png)
 
 ## 索引
 
@@ -26,6 +27,8 @@ icon: creative
 ### ZoneMap 索引 （块索引）
 
 块级索引，是以块为单位，记录块内元数据的索引（最大值、最小值、空值、COUTN、SUM、相关性等）
+
+### Z-Order 索引
 
 ### BloomFilter 索引
 
