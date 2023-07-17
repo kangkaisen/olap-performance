@@ -35,6 +35,10 @@ icon: creative
 
 ### Z-Order 索引
 
+### Liquid Clustering
+
+<https://github.com/delta-io/delta/issues/1874>
+
 ### BloomFilter 索引
 
 过滤条件是 = 和 In
