@@ -45,6 +45,14 @@ icon: creative
 
 <https://github.com/brendangregg/perf-tools>
 
+## iodlr Tools and Reference Code for Intel Optimizations (eg Large Pages)
+
+<https://github.com/intel/iodlr>
+
+## nanoBench
+
+<https://github.com/andreas-abel/nanoBench>
+
 ## Latencytop
 
 可以测试出内核态和用户态导致系统延迟的原因

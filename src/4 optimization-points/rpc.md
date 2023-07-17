@@ -35,6 +35,22 @@ FlatBuffers
 
 ## Zero Copy
 
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9BzxNcdOAGP1FmhOb2PSXQ.png)
+
+Linux sendfile:
+
+```
+ssize_t sendfile(
+  int out_fd,
+  int in_fd,
+  off_t *offset,
+  size_t count
+  );
+```
+
+[高速网络的未来：解析零拷贝Zero-Copy架构](https://mp.weixin.qq.com/s/hfv2-W7IZ9LPcS4BYcFA4g)
+
+
 ## 流量控制
 
 ## RDMA

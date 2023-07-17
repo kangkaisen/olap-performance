@@ -53,5 +53,6 @@ from main memory and caches
 
 ## 性能测试文章
 
-1. Kafka vs Redpanda Performance - Do the claims add up? <https://jack-vanlightly.com/blog/2023/5/15/kafka-vs-redpanda-performance-do-the-claims-add-up>
+1. [Kafka vs Redpanda Performance - Do the claims add up?](https://jack-vanlightly.com/blog/2023/5/15/kafka-vs-redpanda-performance-do-the-claims-add-up)
+2. [远离虚假营销，还原真实的 Flink 和 RisingWave 评测](https://mp.weixin.qq.com/s/53VBMYlgsbgx5G_I8R32mg)
 

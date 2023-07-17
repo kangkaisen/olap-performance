@@ -110,6 +110,17 @@ Cache, TLB, memory-bandwith limitation
 
 #### Huge Page
 
+<https://easyperf.net/blog/2022/09/01/Utilizing-Huge-Pages-For-Code>
+
+remap the code section at runtime
+
+```
+cd iodlr/large_page-c
+make -f Makefile.preload
+sudo cp liblppreload.so /usr/lib64/
+LD_PRELOAD=/usr/lib64/liblppreload.so ../llvm-project/build/bin/clang++ -c -O3 <other options> ../llvm-project/llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+```
+
 #### Cache friendly
 
 #### cache coherence protocol

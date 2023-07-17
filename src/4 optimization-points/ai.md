@@ -3,6 +3,17 @@ title: AI for Query Optimization
 icon: creative
 ---
 
+## 自动建MV
+
+## 自动建索引
+
+## 自动调整分区
+
+<https://www.onehouse.ai/blog/knowing-your-data-partitioning-vices-on-the-data-lakehouse>
+
+## 自动调整分桶
+
+## 自动 Sort Key
 
 ## Azure
 

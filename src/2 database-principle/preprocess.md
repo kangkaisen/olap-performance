@@ -16,6 +16,9 @@ icon: creative
 
 ![Materialized View](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*zVx_6nevHzjg5EyK.jpg)
 
+- 查询时自动改写, MV 对用户透明
+- 导入时预计算，极大减少查询时处理的数据量
+
 ## 索引
 
 

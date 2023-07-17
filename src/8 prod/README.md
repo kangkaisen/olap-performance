@@ -46,3 +46,11 @@ GROUP BY day
 ## 大查询
 
 ## 查询重试策略
+
+## 防止 OOM
+
+### Spill To Disk
+
+### Grouped Execution
+
+### Stage By Stage

@@ -34,6 +34,11 @@ icon: creative
 
 ![vector-expression](/vector-expression.png)
 
+- 更少的虚函数调用
+- 更少的分支判断
+- CPU Cache 更友好
+- 易于SIMD优化
+
 ### Shuffle By Column
 
 ![shuffle-by-column](/shuffle-by-column.png)
@@ -134,6 +139,27 @@ Pointer-chasing（指针追踪）是指在计算过程中频繁地通过指针�
 
 ## Runtime Filter
 
+### What Is Runtime Filter
+
+![what-runtime-filter](/what-runtime-filter.png)
+
+### Runtime Filter 的意义
+
+- Reduce Scan Disk IO
+- Reduce Network Transport
+- Reduce Join Probe Rows
+
+### Runtime Filter 的优化点
+
+- Support Local And Global Runtime Filter
+- Shuffle Aware
+- Push down Max/Min, In Filter To Storage Engine
+- Cost Estimation Based
+- Support Runtime Filter Cache
+- Push Runtime Filter To Two Sides
+- SIMD Bloom Filter
+- Adaptive Join Runtime Filters Selection
+
 ### Local Join Runtime Filter
 
 ![join-runtime-filter](/join-runtime-filter.png)
@@ -156,7 +182,13 @@ Pointer-chasing（指针追踪）是指在计算过程中频繁地通过指针�
 
 ## 网络传输
 
-## 内存管理
+## 提前短路
+
+### Hash Join 提前短路
+
+### Limit 提前短路
+
+## 内存管理 Memory Management
 
 ### 避免 Copy
 
@@ -175,6 +207,10 @@ Pointer-chasing（指针追踪）是指在计算过程中频繁地通过指针�
 - Unaligned store instructions that straddle a cache line incur a bit of a performance penalty.
 - Unaligned store instructions that straddle a page boundary are substantially slower (taking about 4x as long to execute).
 - Unaligned store instructions that do not straddle either of these boundaries are almost free on modern CPU’s
+
+### Column Pool
+
+![column-pool](/column-pool.png)
 
 ## 线程模型
 

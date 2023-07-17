@@ -106,6 +106,8 @@ Restrict Tells The Compile The Arrays In Distinct Locations In Memory
 
 ![simd-filter-2](/simd-filter-2.png)
 
+![simd-filter-3](/simd-filter-3.png)
+
 [Starrocks optimize filter_range when avx512f available](https://github.com/StarRocks/starrocks/pull/14328/files)
 
 ### SIMD aggregate

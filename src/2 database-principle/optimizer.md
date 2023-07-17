@@ -14,3 +14,43 @@ icon: creative
 3. SQL Logical Plan： 将 AST 转换成逻辑计划
 4. SQL Optimize：基于关系代数，统计信息，Cost 模型对逻辑计划进行重写，转换，选择出 Cost “最低” 的物理执行计划
 5. 生成 Plan Fragment：将 Optimizer 选择的物理执行计划 转换为 BE 可以直接执行的 Plan Fragment。
+
+## SQL Parser
+
+- 输入：SQL 文本
+- 输出：AST
+
+## SQL Analyzer
+
+- 输入：AST
+- 输出：Annotated AST
+
+SQL Analyzer 主要做下面几件事情：
+
+- 检查并绑定 Database, Table, Column 等元信息
+- SQL 的合法性检查
+- Table 和 Column 的别名处理
+- 函数参数的合法性检测
+- 类型检查，类型转换
+
+## SQL Planner
+
+- 输入：Annotated AST
+- 输出：Logical Plan
+
+## SQL Optimizer
+
+- 输入：Logical  Plan
+- 输出：**Cost 最小的**  分布式物理执行计划
+
+![sql-optimizer](/sql-optimizer.png)
+
+## CBO查询优化器的框架
+
+![optimizer-architecture](/optimizer-architecture.png)
+
+### 统计信息类型
+
+表粒度统计信息：行数，bytes size
+
+列统计信息：Max, Min，null 比例，distinct count, avg row size
