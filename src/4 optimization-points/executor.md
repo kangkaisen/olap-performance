@@ -291,6 +291,8 @@ Link Order Changes function addresses
 
 - BE CPU Core Number
 - Query Type
+- Data Size
+- Operator Type
 - Data Distribution
 - Statistical Information
 

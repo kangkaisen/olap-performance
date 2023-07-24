@@ -53,6 +53,14 @@ icon: creative
 
 #### Pipeline bubbles
 
+"Pipeline bubbles" 就是指在指令流水线中由于某种原因导致流水线停顿或者空转的情况。
+常见原因如下：
+
+1. 数据依赖：If one instruction depends on another instruction, then it cannot be pushed immediately into the same pipeline.
+2. 分支预测失败
+
+为了减少 pipeline bubbles，CPU 会采用指令重排、数据预取和硬件乱序执行等优化
+
 #### 分支预测
 
 #### SIMD
@@ -68,6 +76,13 @@ icon: creative
 1. 让处理器一个周期处理多条指令
 2. 向量指令：同一条指令同时操作多个数据。
 3. 在同一个芯片中集成多个处理单元
+
+### 影响 CPU 指令吞吐的因素
+
+1. 独立指令数量（Number of Independent Instructions）：CPU能够同时执行多个独立的指令，而这些指令不依赖于彼此的结果。
+2. 分支预测成功的数量
+3. CPU 命中率
+
 
 ### 如何让CPU更快
 
@@ -128,8 +143,6 @@ LD_PRELOAD=/usr/lib64/liblppreload.so ../llvm-project/build/bin/clang++ -c -O3 <
 ### NUMA
 
 ## 性能指标
-
-### CPU Time 计算公式
 
 ### IPC
 

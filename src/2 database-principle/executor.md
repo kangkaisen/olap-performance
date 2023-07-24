@@ -23,6 +23,26 @@ icon: creative
 
 如上图所示，对于SQL Group By City, Platform, 如果 City, Platform 都是低基数字符串，我们就可以将对两个字符串列的 Hash 聚合变为针对两个 Int 列的 Hash 聚合，这样在 Scan, Shuffle，Hash，Equal，Memcpy 等多个重要操作上都会变快很多，我们实测整体查询性能可以有 3 倍的提升。
 
+## 数据库的几种常见执行模式
+
+* Iterator Model: Tuple-at-a-time
+* Materialization Model: Operator-at-a-time
+* Vectorized / Batch Model: Vector-at-a-time
+
+### Iterator Model 的优缺点
+
+优点：
+
+1. 实现简单
+2. 内存占用小
+
+
+缺点：
+
+1. CPU 利用效率太低，CPU的大部分处理时不是用来真正的处理数据，而是在遍历查询操作树。
+
+
+
 ## 最理想的执行模型
 
 - 充分利用多核能力同时处理一个查询
@@ -32,6 +52,9 @@ icon: creative
 ## Push VS Pull
 
 ![push-pull](/push-pull.jpg)
+
+Pull 执行方式是 Top-to-Bottom，从 root 节点开始，从孩子节点 "pull" 数据
+Push 执行方式是 Bottom-to-Top，从 left 节点开始，"push" 数据到父节点
 
 如上图所示，在Push的执行方式中，数据流和控制流方向一致，在Pull的执行方式，数据流和控制流方向相反。
 
@@ -262,6 +285,46 @@ MPP 是大规模并行计算的简称，核心做法是将查询 Plan 拆分成�
 ![mpp-scale-out](/mpp-scale-out.png)
 
 ## 查询编译
+
+### 编译什么
+
+1. 表达式计算
+2. Schema 解析，在提前知道Schema的情况下，可以对代码进行特化，就可以减少很多分支判断
+3. 多列Sort，多列聚合等算子粒度的编译执行
+4. 编译整个查询 Plan：针对整个查询 Plan 编译生成的代码都是紧凑的for循环，可以充分利用 CPU 的寄存器和 Cache，大幅提升效率
+
+![jit-level](/jit-level.png)
+
+### 如何编译
+
+#### Transpilation
+
+Write code that converts a relational query plan into
+imperative language source code and then run it through a
+conventional compiler to generate native code.
+
+#### JIT Compilation
+
+Generate an intermediate representation (IR) of the query
+that the DBMS then compiles into native code .
+
+1. Machine code
+2. Virtual Machine bytecode:《Compiled Query Execution Engine using JVM》
+3. C++
+4. SQL Virtual Machine:数据中自己实现一个VM
+5. LLVM IR: LLVM supports a wide variety of optimizations on the IR code like function inlining, loop vectorization and instruction combining. Further, it supports the addition of custom optimization passes.
+
+### 查询编译的优点
+
+**在已知表结构的情况下，手写的代码一般是最优的代码。**
+
+手写 SQL 高效的原因如下：
+
+1. No virtual function dispatches
+2. Intermediate data in CPU registers vs in memory
+3. Loop unrolling and SIMD
+
+编译生成的代码更高效的一个重要原因还有，在通用执行引擎里面的很多“**变量**”，编译后都变成了 “**常量**”。 **我们在知道用户的 SQL 的之后再 “coding”，会少很多条件判断，少很多无关代码，效率自然会高很多。**
 
 ### 优化点
 
