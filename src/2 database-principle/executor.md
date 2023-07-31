@@ -93,10 +93,12 @@ Push 模型中，Producers 驱动整个流程；Pull 模型中，Consumers 驱�
 ### Push 模型的优点
 
 1. 数据流和控制流解耦，每个算子自身不用处理控制逻辑
-2. 高效的支持  DAG 的plan，不只是 Tree 的plan, 可以进行CTE 复用优化 和 Scan Share 优化
+2. 高效的支持 DAG 的plan，不只是 Tree 的plan, 支持多路输出，可以进行CTE 复用优化 和 Scan Share 优化
 3. 可以方便地进行 yield
 4. 对异步IO 更友好，处理 IO 任务时，将对应算子暂停，数据就绪是唤醒对应的算子
 5. 对 Code-gen 模型更友好
+6. Better code and data locality：Data is not pulled by operators but pushed towards
+the operators.
 
 ### Push 模型的缺点
 
@@ -107,6 +109,8 @@ Push 模型中，Producers 驱动整个流程；Pull 模型中，Consumers 驱�
 ## 向量化执行器
 
 ### What is Vectorized Query Engine
+
+向量化执行的核心是批量按列进行处理。
 
 ![what-vector-engine](/what-vector-engine.png)
 
@@ -175,7 +179,12 @@ Top-down Microarchitecture Analysis Method 的具体内容大家可以参考相�
 
 ![vector](/vector.png)
 
-而数据库向量化对以上 4 点都会有提升，后文会有具体解释，至此，本文从原理上解释了为什么向量化可以提升数据库性能。
+而数据库向量化对以上 4 点都会有提升。 主要原因如下，相比于传统的按行解释执行，向量化执行有以下优点：
+
+1. Interpretation 执行的开销更低（批量执行的优点），更少的虚函数调用，更少的分支预测失败
+2. 对 SIMD 执行更加优化 （按列执行的优点）
+3. 对 CPU Cache 更加优化 （经常操作顺序的内存）
+4. 延迟物化：只需要在最后必要的时候将最终需要的列拼成行
 
 ### 算子和表达式向量化的关键点
 
@@ -225,13 +234,23 @@ Batch 这一点其实比较好做到，难点是对一些重要算子，比如 J
 
 ![starrocks-prefetch](/starrocks-prefetch.png)
 
+### 向量化执行的缺点
+
+向量化执行相比按行执行的缺点如下：
+
+1. 更多的内存占用
+2. 内存更容易成为瓶颈，从而抵消向量化的好处
+3. 对 UDF 不友好
+
 ## Pipeline 多核执行
 
 ### What's pipeline
 
 ![what-pipeline](/what-pipeline.png)
 
-Inside one pipeline, there is no data materialize,Fragment decomposes into pipelines;  Pipeline contains multi operators
+**Pipeline means that an operator can pass data to its parent operator without copying or otherwise materializing the data.**
+
+Inside one pipeline, there is no data materialize, Fragment decomposes into pipelines;  Pipeline contains multi operators
 
 ![pipeline-operator](/pipeline-operator.png)
 
@@ -311,8 +330,31 @@ that the DBMS then compiles into native code .
 1. Machine code
 2. Virtual Machine bytecode:《Compiled Query Execution Engine using JVM》
 3. C++
-4. SQL Virtual Machine:数据中自己实现一个VM
+4. SQL Virtual Machine:数据库中自己实现一个VM
 5. LLVM IR: LLVM supports a wide variety of optimizations on the IR code like function inlining, loop vectorization and instruction combining. Further, it supports the addition of custom optimization passes.
+
+#### 基于 Push 模型的 Code Gen 示意
+
+In a push-based model, child operators produce and push tuples to their parents, requesting them to consume the tuples.
+
+Conceptually each operator offers two functions:
+
+• produce()
+• consume(attributes, source)
+
+**produce/consume interface 主要是为了进行代码生成，在生成的实际执行代码中并不存在。**
+
+Codegen动图： <https://ericfu.me/images/2019/03/code-gen-demo-animated.gif>
+
+#### Operator Fusion
+
+将多个算子的执行放到一个紧凑的循环里：
+
+![Operatoe-fusion](/operatoe-fusion.png)
+
+优点：避免了将数据物化到内存，可以让数据尽可能常驻 CPU 寄存器和 CPU Cache 中，进而显著提升执行效率
+
+缺点：tuple one time 导致无法利用 SIMD
 
 ### 查询编译的优点
 
@@ -326,6 +368,12 @@ that the DBMS then compiles into native code .
 
 编译生成的代码更高效的一个重要原因还有，在通用执行引擎里面的很多“**变量**”，编译后都变成了 “**常量**”。 **我们在知道用户的 SQL 的之后再 “coding”，会少很多条件判断，少很多无关代码，效率自然会高很多。**
 
+### 查询编译的缺点
+
+1. 编译耗时可能很长，越复杂的查询，编译时间越长
+2. 对 Debug 很不友好
+
+
 ### 优化点
 
 1. 先解释执行，然后异步编译查询，编译完成后，将解释执行切换到 编译好的 Native Code 执行 <https://github.com/cmu-db/peloton-design/blob/master/bytecode_interpreter/bytecode_interpreter.md>
@@ -334,5 +382,34 @@ that the DBMS then compiles into native code .
 
 ## 向量化 VS 查询编译
 
+* 两者整体的性能基本持平
 * Data-centric is better for "calculation-heavy" queries with few cache misses
 * Vectorization is slightly better at hiding cache miss latencies
+
+详情参看[Everything You Always Wanted to Know About Compiled and Vectorized Queries But Were Afraid to Ask](https://www.vldb.org/pvldb/vol11/p2209-kersten.pdf) 10 SUMMARY 部分
+
+
+## Relaxed Operator Fusion
+
+### Why Relaxed Operator Fusion
+
+因为查询编译一般是tuple one time, 无法利用到 Vectorized 和 Prefetching 的优点。RELAXED OPERATOR FUSION 就是想同时利用到 Compilation，Vectorized 和 Prefetching 的优点。
+
+### How Relaxed Operator Fusion
+
+为了在支持 Compilation 的同时，支持 Vectorized 和 Prefetching，就需要引入vector，所以ROF引入了 Stage 的概念，可以将一个Pipeline拆分成多个 Stage，通过stage 引入 Vector后，就可以支持 Vectorized 和 Prefetching。 如下图所示：
+
+![Relaxed Operator Fusion](/rof.png)
+
+一些关键点：
+
+1. 利用 Prefetch 避免 Hash Join 大量随机访问导致的 CPU Stall
+2. 查询 Plan 时决定是否启用 SIMD predicate evaluation，是否启用 prefetching
+3. 如果一个operators里包含需要随机访问且大小超过cache size的数据结构，planner就会插入一个stage，来启用prefetching。
+4. Prefetch 和 SIMD vectorization 都需要一次可以处理多行数据
+5. SIMD vector instructions require that data be packed together contiguously
+6. Prefetch 不需要数据的地址连续
+7. In order to successfully hide cache miss latency with prefetching, the software must prefetch a number of tuples ahead (to overlap the cache miss with the processing of other tuples)
+8. Software prefetch instructions can move blocks of data from memory into the CPU caches before they are needed, thereby hiding the latency of expensive cache misses
+
+
