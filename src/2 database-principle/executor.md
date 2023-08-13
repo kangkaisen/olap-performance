@@ -350,7 +350,7 @@ Codegen动图： <https://ericfu.me/images/2019/03/code-gen-demo-animated.gif>
 
 将多个算子的执行放到一个紧凑的循环里：
 
-![Operatoe-fusion](/operatoe-fusion.png)
+![Operator-fusion](/operator-fusion.png)
 
 优点：避免了将数据物化到内存，可以让数据尽可能常驻 CPU 寄存器和 CPU Cache 中，进而显著提升执行效率
 
