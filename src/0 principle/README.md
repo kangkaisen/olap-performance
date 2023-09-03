@@ -15,6 +15,16 @@ icon: creative
 
 ![performance-bottleneck-vary](/performance-bottleneck-vary.png)
 
+### 几乎不存在任何场景下都百分之百正向的优化
+
+大多数情况下，我们做的优化都会有一些 Bad Case 或者是使用了更多系统资源。所以我们在完成一个性能优化后，
+一定要思考清楚这个优化的Bad Case 是什么，充分进行性能测试。 比如：
+
+1. 常见的 Local Cache 优化： 当 Local Disk 本身的 IO 压力很大时，可能就没有直接读取 Remote Storage 快
+2. 谓词下推优化： 下推太多的谓词可能导致重复过滤，浪费更多的 CPU
+3. Perfetch 优化：高并发时可能会有 Bad Case
+4. IO 合并优化： 有时候虽然减少了 IO 读取次数，但是却导致读取了更多的数据
+
 ## 查询性能优化的意义
 
 对一个数据库产品来说：
