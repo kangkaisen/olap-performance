@@ -103,6 +103,10 @@ StarRocks 对 Nullable 的优化主要体现在下面几点：
 
 <https://mp.weixin.qq.com/s/-VNQRyZflHC6yTMbjL1XDA>
 
+### TOPN Push down Outer Join
+
+https://github.com/StarRocks/starrocks/pull/30128
+
 ### 聚合算子复用
 
 比如对于下面的 SQL:
