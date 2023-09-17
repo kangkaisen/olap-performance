@@ -149,6 +149,8 @@ Pointer-chasing（指针追踪）是指在计算过程中频繁地通过指针�
 - Reduce Network Transport
 - Reduce Join Probe Rows
 
+越复杂的 Join SQL，数据量越大的数据集，Runtime Filter 的优化意义越大， Runtime Filter 带来 10倍到 100倍的性能提升。 10 倍到 100倍 是 StarRocks 真实用户生产环境的数据。
+
 ### Runtime Filter 的优化点
 
 - Support Local And Global Runtime Filter
@@ -159,6 +161,8 @@ Pointer-chasing（指针追踪）是指在计算过程中频繁地通过指针�
 - Push Runtime Filter To Two Sides
 - SIMD Bloom Filter
 - Adaptive Join Runtime Filters Selection
+- Multi Column Runtime Filter
+- 只下推有选择性的 Runtime Filer
 
 ### Local Join Runtime Filter
 
