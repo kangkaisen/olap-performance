@@ -82,6 +82,7 @@ icon: creative
 ## 资料
 
 - [数据库学习资料](https://blog.bcmeng.com/post/database-learning.html)
+- [System Design 101](https://github.com/ByteByteGoHq/system-design-101)
 - [SNOWFLAKE SUMMIT SESSIONS](https://www.snowflake.com/summit-sessions/)
 - [AWS re:Invent 2022](https://www.youtube.com/playlist?list=PL2yQDdvlhXf_hIzmfHCdbcXj2hS52oP9r)
 - [Foundations and Trends® in Databases](https://www.nowpublishers.com/DBS)
