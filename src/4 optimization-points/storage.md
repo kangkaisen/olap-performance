@@ -11,6 +11,10 @@ icon: creative
 - 高效编码压缩:同一列的数据类型相同，数据特点相似，压缩比更高
 - 丰富索引加速过滤
 
+### 半结构化列存
+
+[Json 自动列存]( <https://mp.weixin.qq.com/s/MH5rrG3Pm0Qt2xE8hT0glw>)
+
 ## 索引
 
 ### Hash 索引
@@ -37,7 +41,7 @@ icon: creative
 
 ### Liquid Clustering
 
-<https://github.com/delta-io/delta/issues/1874>
+[Databricks Liquid Clustering 原理](https://blog.bcmeng.com/post/liquid-clustering.html)
 
 ### BloomFilter 索引
 
