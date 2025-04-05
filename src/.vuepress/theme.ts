@@ -7,7 +7,7 @@ export default hopeTheme({
 
   author: {
     name: "康凯森",
-    url: "https://www.bcmeng.com/",
+    url: "https://kangkaisen.com",
   },
 
   navbarLayout: {
@@ -34,7 +34,7 @@ export default hopeTheme({
 
       footer: "欢迎Star&贡献",
 
-      copyright: 'Copyright © 2023 <a href="https://www.bcmeng.com/" target="_blank" >康凯森</a>',
+      copyright: 'Copyright © 2023 <a href="https://kangkaisen.com" target="_blank" >康凯森</a>',
 
       displayFooter: true,
 

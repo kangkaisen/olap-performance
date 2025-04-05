@@ -37,11 +37,13 @@ icon: creative
 
 块级索引，是以块为单位，记录块内元数据的索引（最大值、最小值、空值、COUTN、SUM、相关性等）
 
+HyperLogLog 统计信息
+
 ### Z-Order 索引
 
 ### Liquid Clustering
 
-[Databricks Liquid Clustering 原理](https://blog.bcmeng.com/post/liquid-clustering.html)
+[Databricks Liquid Clustering 原理](https://docs.google.com/document/d/1FWR3odjOw4v4-hjFy_hVaNdxHVs4WuK1asfB6M6XEMw/edit#heading=h.skpz7c7ga1wl)
 
 ### BloomFilter 索引
 
