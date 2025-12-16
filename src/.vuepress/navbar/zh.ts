@@ -7,8 +7,8 @@ export const zhNavbar = navbar([
     link: "/",
   },
   {
-    text: "编程小梦",
+    text: "TalkCody",
     icon: "note",
-    link: "https://blog.bcmeng.com/",
+    link: "https://talkcody.com",
   },
 ]);
