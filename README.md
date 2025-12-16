@@ -27,12 +27,11 @@
 
 ## 更新计划
 
-希望能在 2025 年的时候完成这本书籍的 1.0 版本，计划从 0.1 到 1.0 发布 10个版本
+AI 时代，我们可以利用 AI 快速，系统的学习性能优化。 我从零打造了 AI Coding Agent —— TalkCody:
 
-## TODO
+https://github.com/talkcody/talkcody
 
-- [x] 完成基本大纲，发布 0.1 版本  <https://blog.bcmeng.com/post/olap-book-1.html>
-- [ ] 整理完本地的几十篇笔记和分享，发布 0.2 版本
+欢迎大家 Star, Issues 和 PR。
 
 ## 如何贡献
 
